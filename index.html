@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUSTOVA Turizm — Kurumsal Seyahat Yönetimi | Otel, Uçak, Transfer, Vize</title>
+<meta name="description" content="GUSTOVA Turizm Ticaret Ltd. Şti. — TÜRSAB #18492 A grubu seyahat acentası. Kurumsal otel, uçak, transfer, vize ve özel jet; acente fiyatı, tek fatura, cari hesap, 7/24 tek muhatap.">
+<meta property="og:title" content="GUSTOVA Turizm — Kurumsal Seyahat Yönetimi">
+<meta property="og:description" content="Otel, uçak, transfer ve vize tek muhatapta, tek faturada. TÜRSAB #18492.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C2422;
+  --ink-2:#14352F;
+  --ink-3:#1E4740;
+  --brass:#C08A3E;
+  --brass-soft:#E5C68E;
+  --paper:#F5F6F3;
+  --paper-2:#EDEFEA;
+  --line:#D7DCD5;
+  --text:#18211F;
+  --muted:#5C6864;
+  --white:#FFFFFF;
+  --radius:14px;
+  --maxw:1180px;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk","Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#F5F6F3; --paper-2:#EDEFEA; --text:#18211F; --white:#FFFFFF; --line:#D7DCD5; --muted:#5C6864;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#F5F6F3; --paper-2:#EDEFEA; --text:#18211F; --white:#FFFFFF; --line:#D7DCD5; --muted:#5C6864;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--text);
+  font-family:var(--sans);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.012em}
+h1{font-size:clamp(2.3rem,5.2vw,4rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.9rem)}
+h3{font-size:1.14rem;line-height:1.3}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:86px 0}
+.lead{color:var(--muted);font-size:1.06rem;max-width:62ch}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:60;background:rgba(245,246,243,.92);
+  backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:26px;height:78px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.brand svg{display:block}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm b{font-family:var(--serif);font-size:1.34rem;font-weight:700;letter-spacing:.03em;color:var(--ink)}
+.brand .wm span{font-size:.605rem;letter-spacing:.34em;color:var(--brass);font-weight:600;margin-top:4px}
+nav{margin-left:auto;display:flex;align-items:center;gap:28px}
+nav a.nl{text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink-2);opacity:.85}
+nav a.nl:hover{opacity:1;color:var(--brass)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--white)}
+.lang button{border:0;background:none;font:inherit;font-size:.8rem;font-weight:600;padding:6px 12px;cursor:pointer;color:var(--muted)}
+.lang button.on{background:var(--ink);color:var(--white)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;
+  border:1px solid transparent;cursor:pointer;font-family:var(--sans);
+}
+.btn-p{background:var(--brass);color:#20160A}
+.btn-p:hover{background:#AD7A31}
+.btn-g{background:var(--ink);color:var(--white)}
+.btn-g:hover{background:var(--ink-3)}
+.btn-o{border-color:var(--line);color:var(--ink);background:var(--white)}
+.btn-o:hover{border-color:var(--ink)}
+.menu-tgl{display:none;border:1px solid var(--line);background:var(--white);border-radius:10px;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+@media(max-width:960px){
+  nav .nl{display:none}
+  .menu-tgl{display:block}
+  nav{gap:12px}
+  .bar{height:70px}
+}
+#mnav{display:none;border-top:1px solid var(--line);background:var(--paper)}
+#mnav.open{display:block}
+#mnav a{display:block;padding:14px 24px;text-decoration:none;border-bottom:1px solid var(--line);font-weight:500}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ink);color:#EAF0ED;padding:0;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 88% 8%, rgba(192,138,62,.20), transparent 62%),
+    radial-gradient(700px 500px at 6% 96%, rgba(30,71,64,.85), transparent 60%);
+}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:62px;align-items:center;padding:96px 0 100px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.83rem;font-weight:600;color:var(--brass-soft);margin-bottom:22px}
+.tag i{width:26px;height:1px;background:var(--brass);display:block}
+.hero h1{color:var(--white);max-width:15ch}
+.hero .sub{color:#BFCFC9;margin-top:22px;font-size:1.12rem;max-width:52ch}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.trustline{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);display:flex;gap:34px;flex-wrap:wrap}
+.trustline div b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--white);font-weight:600}
+.trustline div span{font-size:.85rem;color:#9FB3AC}
+
+/* ledger card — the one bold object */
+.ledger{background:var(--white);border-radius:18px;padding:30px 30px 26px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);color:var(--text)}
+.ledger .lh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px}
+.ledger .lh b{font-family:var(--serif);font-size:1.2rem}
+.ledger .lh span{font-size:.78rem;color:var(--muted)}
+.lrow{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.lrow em{font-style:normal;color:var(--muted);font-size:.82rem;display:block}
+.lrow s{color:var(--muted);opacity:.75;font-size:.88rem;margin-right:8px}
+.ltotal{display:flex;justify-content:space-between;align-items:center;margin-top:18px;background:var(--ink);color:var(--white);border-radius:12px;padding:16px 18px}
+.ltotal b{font-family:var(--serif);font-size:1.12rem;font-weight:600}
+.ltotal span{font-size:.82rem;color:var(--brass-soft);font-weight:600}
+.lnote{font-size:.8rem;color:var(--muted);margin-top:14px;line-height:1.5}
+@media(max-width:940px){.hero-in{grid-template-columns:1fr;gap:44px;padding:64px 0 72px}}
+
+/* ---------- generic blocks ---------- */
+.shead{max-width:62ch;margin-bottom:46px}
+.shead p{color:var(--muted);margin-top:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+@media(max-width:900px){.g3,.g4,.g2{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.g3,.g4,.g2{grid-template-columns:1fr}}
+
+.pill{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px}
+.pill .ic{width:40px;height:40px;border-radius:10px;background:var(--paper-2);display:grid;place-items:center;margin-bottom:18px;color:var(--ink)}
+.pill h3{margin-bottom:9px}
+.pill p{color:var(--muted);font-size:.96rem}
+
+/* three differentiators — numbered rail is not used; uses brass rule */
+.diff{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;border-top:3px solid var(--brass)}
+.diff h3{font-size:1.28rem;margin-bottom:12px}
+.diff p{color:var(--muted);font-size:.98rem}
+
+/* compare */
+.compare{background:var(--ink-2);color:#E6EEEA;border-radius:20px;padding:44px 40px}
+.compare h2{color:var(--white)}
+.compare .lead{color:#B4C6C0}
+.cbox{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:26px 24px}
+.cbox h3{color:var(--white);margin-bottom:16px;font-size:1.1rem}
+.cbox ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cbox li{display:flex;gap:11px;font-size:.95rem;color:#C8D6D1;line-height:1.45}
+.cbox li b{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;margin-top:2px}
+.no b{background:rgba(255,255,255,.12);color:#9FB3AC}
+.yes b{background:var(--brass);color:#20160A}
+.yes li{color:#EAF2EF}
+@media(max-width:620px){.compare{padding:32px 22px;border-radius:16px}}
+
+/* steps (real sequence -> numbers justified) */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.step{padding:28px 26px 28px 0;border-right:1px solid var(--line)}
+.step:last-child{border-right:0}
+.step .n{font-family:var(--serif);font-size:1.05rem;color:var(--brass);font-weight:700;margin-bottom:14px}
+.step h3{margin-bottom:8px}
+.step p{color:var(--muted);font-size:.95rem}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--line);padding-right:22px}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.step{border-right:0}}
+
+/* services */
+.svc{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px}
+.svc h3{font-size:1.04rem;margin-bottom:8px}
+.svc p{font-size:.92rem;color:var(--muted)}
+
+/* stats band */
+.band{background:var(--ink);color:var(--white)}
+.band .g4 div b{font-family:var(--serif);font-size:2.3rem;display:block;font-weight:600}
+.band .g4 div span{color:#9FB3AC;font-size:.92rem}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:32px}}
+.form{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px}
+.field{margin-bottom:15px}
+label{display:block;font-size:.83rem;font-weight:600;margin-bottom:6px;color:var(--ink-2)}
+input,select,textarea{
+  width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+  font:inherit;font-size:.95rem;background:var(--paper);color:var(--text);
+}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);background:var(--white);outline:none;box-shadow:0 0 0 3px rgba(192,138,62,.22)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+@media(max-width:520px){.frow{grid-template-columns:1fr}}
+.fbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.fnote{font-size:.82rem;color:var(--muted);margin-top:14px}
+.cline{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.cline .ic{flex-shrink:0;width:36px;height:36px;border-radius:9px;background:var(--white);border:1px solid var(--line);display:grid;place-items:center}
+.cline b{display:block;font-size:.8rem;color:var(--muted);font-weight:600;margin-bottom:2px}
+.cline a{text-decoration:none;font-weight:600;color:var(--ink)}
+.cline a:hover{color:var(--brass)}
+.qr{display:flex;gap:18px;align-items:center;margin-top:26px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px}
+.qr #qrbox{width:118px;height:118px;flex-shrink:0;display:grid;place-items:center;background:#fff;border-radius:8px}
+.qr #qrbox img,.qr #qrbox canvas{width:118px;height:118px}
+.qr p{font-size:.88rem;color:var(--muted)}
+
+/* footer */
+footer{background:var(--ink);color:#A9BCB6;padding:58px 0 30px;font-size:.92rem}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+@media(max-width:820px){.fgrid{grid-template-columns:1fr;gap:30px}}
+footer h4{font-family:var(--sans);font-size:.83rem;font-weight:700;color:var(--white);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--brass-soft)}
+.fbot{margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:#88A099}
+.wfloat{position:fixed;right:20px;bottom:20px;z-index:70;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="GUSTOVA Turizm">
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" stroke="#0C2422" stroke-width="2.4"/>
+        <path d="M2.6 18.5h42.8M2.6 29.5h42.8" stroke="#0C2422" stroke-width="1.6" opacity=".45"/>
+        <path d="M24 2c-7 7.6-7 36.4 0 44 7-7.6 7-36.4 0-44Z" stroke="#0C2422" stroke-width="1.6" opacity=".45"/>
+        <path d="M8 33.5c7-9.5 16.5-17 30-21.5" stroke="#C08A3E" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="38" cy="12" r="4" fill="#C08A3E"/>
+      </svg>
+      <span class="wm"><b>GUSTOVA</b><span>TURİZM</span></span>
+    </a>
+    <nav>
+      <a class="nl" href="#neden" data-tr="Neden GUSTOVA" data-en="Why GUSTOVA">Neden GUSTOVA</a>
+      <a class="nl" href="#fatura" data-tr="Tek fatura" data-en="One invoice">Tek fatura</a>
+      <a class="nl" href="#nasil" data-tr="Nasıl çalışır" data-en="How it works">Nasıl çalışır</a>
+      <a class="nl" href="#hizmetler" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+      <a class="nl" href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
+      <div class="lang">
+        <button id="btr" class="on" type="button">TR</button>
+        <button id="ben" type="button">EN</button>
+      </div>
+      <a class="btn btn-p" href="#iletisim" data-tr="Teklif al" data-en="Get a quote">Teklif al</a>
+      <button class="menu-tgl" id="mt" aria-label="Menü" type="button">☰</button>
+    </nav>
+  </div>
+  <div id="mnav">
+    <a href="#neden" data-tr="Neden GUSTOVA" data-en="Why GUSTOVA">Neden GUSTOVA</a>
+    <a href="#fatura" data-tr="Tek fatura" data-en="One invoice">Tek fatura</a>
+    <a href="#nasil" data-tr="Nasıl çalışır" data-en="How it works">Nasıl çalışır</a>
+    <a href="#hizmetler" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
+    <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="tag"><i></i><span data-tr="TÜRSAB #18492 · A grubu seyahat acentası" data-en="TÜRSAB #18492 — Class A travel agency">TÜRSAB #18492 · A grubu seyahat acentası</span></span>
+      <h1 data-tr="Şirketinizin seyahat departmanı, bizde." data-en="Your travel department, run by us.">Şirketinizin seyahat departmanı, bizde.</h1>
+      <p class="sub" data-tr="Otel, uçak, transfer ve vizeyi tek mesajla ayarlıyoruz; hepsini tek faturada, cari hesabınıza işliyoruz. Çoğu otelde online platformlarda göremeyeceğiniz acente fiyatı." data-en="Hotels, flights, transfers and visas arranged with a single message, billed on one invoice to your account — at agency rates you won't see on public booking sites.">Otel, uçak, transfer ve vizeyi tek mesajla ayarlıyoruz; hepsini tek faturada, cari hesabınıza işliyoruz. Çoğu otelde online platformlarda göremeyeceğiniz acente fiyatı.</p>
+      <div class="cta">
+        <a class="btn btn-p" id="wa1" href="#" data-tr="WhatsApp'tan teklif al" data-en="Ask on WhatsApp">WhatsApp'tan teklif al</a>
+        <a class="btn btn-o" href="#nasil" data-tr="Nasıl çalışıyoruz?" data-en="How we work">Nasıl çalışıyoruz?</a>
+      </div>
+      <div class="trustline">
+        <div><b>1M+</b><span data-tr="otel, 5 global tedarikçi" data-en="hotels, 5 global suppliers">otel, 5 global tedarikçi</span></div>
+        <div><b>50+</b><span data-tr="ülkede aktif rezervasyon" data-en="countries served">ülkede aktif rezervasyon</span></div>
+        <div><b>7/24</b><span data-tr="tek muhatap, tek hat" data-en="one contact, one line">tek muhatap, tek hat</span></div>
+      </div>
+    </div>
+
+    <!-- ledger -->
+    <div class="ledger" aria-label="Örnek tek fatura">
+      <div class="lh">
+        <b data-tr="Aylık seyahat ekstresi" data-en="Monthly travel statement">Aylık seyahat ekstresi</b>
+        <span data-tr="Örnek · tek fatura" data-en="Sample — one invoice">Örnek · tek fatura</span>
+      </div>
+      <div class="lrow"><span data-tr="Otel — 3 şehir, 11 gece" data-en="Hotels — 3 cities, 11 nights">Otel — 3 şehir, 11 gece<em data-tr="Booking fiyatının altında" data-en="Below public rate">Booking fiyatının altında</em></span><span><s>€4.180</s><b>€3.460</b></span></div>
+      <div class="lrow"><span data-tr="Uçak bileti — 6 bilet" data-en="Flights — 6 tickets">Uçak bileti — 6 bilet<em data-tr="Değişiklik takibi dahil" data-en="Changes handled by us">Değişiklik takibi dahil</em></span><b>€2.140</b></div>
+      <div class="lrow"><span data-tr="Transfer & araç" data-en="Transfers & car hire">Transfer & araç<em data-tr="Havalimanı karşılama" data-en="Airport meet & greet">Havalimanı karşılama</em></span><b>€ 610</b></div>
+      <div class="lrow"><span data-tr="Vize & belge" data-en="Visa & documents">Vize & belge<em data-tr="Başvuru ve randevu takibi" data-en="Application tracking">Başvuru ve randevu takibi</em></span><b>€ 390</b></div>
+      <div class="ltotal"><b data-tr="Tek e-fatura, dönem sonu" data-en="One e-invoice, end of period">Tek e-fatura, dönem sonu</b><span>€6.600</span></div>
+      <p class="lnote" data-tr="Kişi, departman veya proje bazında ayrıştırılır. Rezervasyon anındaki kur faturaya aynen yansır; sonradan kur farkı çıkmaz." data-en="Split by person, department or project. The exchange rate at booking is the rate on the invoice — no surprise adjustments.">Kişi, departman veya proje bazında ayrıştırılır. Rezervasyon anındaki kur faturaya aynen yansır; sonradan kur farkı çıkmaz.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NEDEN -->
+<section id="neden">
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="Otelinizi neden bizden alırsınız?" data-en="Why book through us?">Otelinizi neden bizden alırsınız?</h2>
+      <p data-tr="Booking, Expedia ve otel sitelerine göre üç somut fark." data-en="Three concrete differences from Booking, Expedia and hotel websites.">Booking, Expedia ve otel sitelerine göre üç somut fark.</p>
+    </div>
+    <div class="g3">
+      <div class="diff">
+        <h3 data-tr="Size özel acente fiyatı" data-en="Net agency rates">Size özel acente fiyatı</h3>
+        <p data-tr="Çoğu otelde net acente fiyatı; aynı oda, daha düşük tutar. Teklifi Booking ve otel sitesiyle karşılaştırmalı gönderiyoruz — farkı kendiniz görüyorsunuz." data-en="Net agency pricing at most hotels: same room, lower total. Every quote comes compared against Booking and the hotel's own site, so you see the difference yourself.">Çoğu otelde net acente fiyatı; aynı oda, daha düşük tutar. Teklifi Booking ve otel sitesiyle karşılaştırmalı gönderiyoruz — farkı kendiniz görüyorsunuz.</p>
+      </div>
+      <div class="diff">
+        <h3 data-tr="Tek fatura, sıfır evrak takibi" data-en="One invoice, no paperwork chase">Tek fatura, sıfır evrak takibi</h3>
+        <p data-tr="Otel, uçak, transfer ve vize firmanız adına tek KDV'li e-faturada. Resepsiyonda fatura beklemek, tedarikçi kovalamak yok." data-en="Hotel, flight, transfer and visa on a single VAT e-invoice issued to your company. No waiting at reception, no chasing suppliers.">Otel, uçak, transfer ve vize firmanız adına tek KDV'li e-faturada. Resepsiyonda fatura beklemek, tedarikçi kovalamak yok.</p>
+      </div>
+      <div class="diff">
+        <h3 data-tr="7/24 tek muhatap" data-en="One contact, around the clock">7/24 tek muhatap</h3>
+        <p data-tr="Şirketinize özel WhatsApp grubu. Uçuş iptali, otelde sorun, program değişikliği — dakikalar içinde yanıt, rezervasyon ücreti yok." data-en="A WhatsApp group dedicated to your company. Cancelled flight, hotel problem, changed plan — answered in minutes, with no booking fee.">Şirketinize özel WhatsApp grubu. Uçuş iptali, otelde sorun, program değişikliği — dakikalar içinde yanıt, rezervasyon ücreti yok.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FATURA / KARŞILAŞTIRMA -->
+<section id="fatura" style="padding-top:0">
+  <div class="wrap">
+    <div class="compare">
+      <div class="shead" style="margin-bottom:34px">
+        <h2 data-tr="Seyahatin tamamı, tek kayıt" data-en="The whole trip, one record">Seyahatin tamamı, tek kayıt</h2>
+        <p class="lead" data-tr="Otel + uçak + transfer + vize — hepsi tek faturada kapanır." data-en="Hotel + flight + transfer + visa — closed with a single invoice.">Otel + uçak + transfer + vize — hepsi tek faturada kapanır.</p>
+      </div>
+      <div class="g2">
+        <div class="cbox no">
+          <h3 data-tr="Bugün nasıl gidiyor" data-en="How it goes today">Bugün nasıl gidiyor</h3>
+          <ul>
+            <li><b>✕</b><span data-tr="Her otel için ayrı arama, ayrı ödeme" data-en="A separate search and payment for every hotel">Her otel için ayrı arama, ayrı ödeme</span></li>
+            <li><b>✕</b><span data-tr="Check-out'ta resepsiyonda fatura bekleme" data-en="Waiting at reception for an invoice at check-out">Check-out'ta resepsiyonda fatura bekleme</span></li>
+            <li><b>✕</b><span data-tr="Tedarikçiden fatura kovalama" data-en="Chasing suppliers for missing documents">Tedarikçiden fatura kovalama</span></li>
+            <li><b>✕</b><span data-tr="Muhasebede onlarca ayrı fiş ve fatura" data-en="Dozens of separate receipts in accounting">Muhasebede onlarca ayrı fiş ve fatura</span></li>
+            <li><b>✕</b><span data-tr="Her rezervasyonda kart çıkarma, kur sürprizi" data-en="Card out for every booking, surprise FX differences">Her rezervasyonda kart çıkarma, kur sürprizi</span></li>
+          </ul>
+        </div>
+        <div class="cbox yes">
+          <h3 data-tr="GUSTOVA ile" data-en="With GUSTOVA">GUSTOVA ile</h3>
+          <ul>
+            <li><b>✓</b><span data-tr="Tek mesajla rezervasyon: WhatsApp veya e-posta" data-en="Book with one message: WhatsApp or email">Tek mesajla rezervasyon: WhatsApp veya e-posta</span></li>
+            <li><b>✓</b><span data-tr="Fatura önceden hazır, resepsiyonda sıfır bekleme" data-en="Invoice ready in advance, nothing to do at reception">Fatura önceden hazır, resepsiyonda sıfır bekleme</span></li>
+            <li><b>✓</b><span data-tr="Belge takibi tamamen bizde" data-en="Document tracking is entirely on us">Belge takibi tamamen bizde</span></li>
+            <li><b>✓</b><span data-tr="Tüm kalemler tek faturada; kişi, departman veya proje bazında ayrıştırma" data-en="All items on one invoice, split by person, department or project">Tüm kalemler tek faturada; kişi, departman veya proje bazında ayrıştırma</span></li>
+            <li><b>✓</b><span data-tr="Cari hesap ve dönem sonu ödeme; rezervasyon anındaki kur sabit" data-en="Account balance settled at period end; the booking-day rate is fixed">Cari hesap ve dönem sonu ödeme; rezervasyon anındaki kur sabit</span></li>
+            <li><b>✓</b><span data-tr="Teşvik, hibe ve destek başvurularında kullanılabilir fatura düzeni" data-en="Invoice format usable in grant and incentive applications">Teşvik, hibe ve destek başvurularında kullanılabilir fatura düzeni</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMANLAR -->
+<section style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="Şirkette herkesin işi kolaylaşır" data-en="Easier for every team">Şirkette herkesin işi kolaylaşır</h2>
+      <p data-tr="Kurumsal seyahat dört departmanı birden meşgul eder. Dördünü de biz üstleniyoruz." data-en="Corporate travel keeps four teams busy at once. We take all four off your desk.">Kurumsal seyahat dört departmanı birden meşgul eder. Dördünü de biz üstleniyoruz.</p>
+    </div>
+    <div class="g4">
+      <div class="pill">
+        <div class="ic">🛒</div>
+        <h3 data-tr="Satın alma" data-en="Procurement">Satın alma</h3>
+        <p data-tr="Teklif toplama ve fiyat karşılaştırma yükü kalkar. Global tedarikçi ağıyla en ekonomik seçeneği biz buluruz, şeffaf karşılaştırmayla sunarız." data-en="No more collecting quotes and comparing prices. We find the most economical option across our global supplier network and show the comparison openly.">Teklif toplama ve fiyat karşılaştırma yükü kalkar. Global tedarikçi ağıyla en ekonomik seçeneği biz buluruz, şeffaf karşılaştırmayla sunarız.</p>
+      </div>
+      <div class="pill">
+        <div class="ic">🧾</div>
+        <h3 data-tr="Muhasebe & finans" data-en="Finance & accounting">Muhasebe & finans</h3>
+        <p data-tr="Fatura bekleme ve eksik evrak takibi biter. Otel, uçak ve transfer tek faturada; aylık ekstreyle mutabakat dakikalar sürer." data-en="Waiting on invoices and missing documents ends. Hotel, flight and transfer on one invoice; reconciliation takes minutes with the monthly statement.">Fatura bekleme ve eksik evrak takibi biter. Otel, uçak ve transfer tek faturada; aylık ekstreyle mutabakat dakikalar sürer.</p>
+      </div>
+      <div class="pill">
+        <div class="ic">👥</div>
+        <h3 data-tr="İnsan kaynakları" data-en="People team">İnsan kaynakları</h3>
+        <p data-tr="Beklenmedik durumlarda yanınızdayız: uçuş iptali, otelde sorun, program değişikliği. Çalışan tek numarayı arar, gerisini biz hallederiz." data-en="We're there when plans break: cancelled flights, hotel issues, changed schedules. Your employee calls one number and we handle the rest.">Beklenmedik durumlarda yanınızdayız: uçuş iptali, otelde sorun, program değişikliği. Çalışan tek numarayı arar, gerisini biz hallederiz.</p>
+      </div>
+      <div class="pill">
+        <div class="ic">📈</div>
+        <h3 data-tr="Yönetim" data-en="Management">Yönetim</h3>
+        <p data-tr="Aylık ve yıllık seyahat raporlarıyla çalışan seyahatleri ve harcamalar kontrol altında; bütçe planlaması kolaylaşır." data-en="Monthly and annual travel reports keep trips and spend visible, making budget planning straightforward.">Aylık ve yıllık seyahat raporlarıyla çalışan seyahatleri ve harcamalar kontrol altında; bütçe planlaması kolaylaşır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL -->
+<section id="nasil">
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="Nasıl çalışır?" data-en="How it works">Nasıl çalışır?</h2>
+      <p data-tr="Dört adım, tek muhatap. İş seyahatinde program anlık değişir; zamanın değerini biliyoruz." data-en="Four steps, one contact. Business travel changes by the hour — we plan for that.">Dört adım, tek muhatap. İş seyahatinde program anlık değişir; zamanın değerini biliyoruz.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-tr="Talep" data-en="Request">Talep</h3><p data-tr="WhatsApp veya e-posta ile otel, tarih ve kişi sayısını yazarsınız." data-en="Send the hotel, dates and headcount by WhatsApp or email.">WhatsApp veya e-posta ile otel, tarih ve kişi sayısını yazarsınız.</p></div>
+      <div class="step"><div class="n">2</div><h3 data-tr="Teklif" data-en="Quote">Teklif</h3><p data-tr="Aynı gün alternatifli, Booking ile karşılaştırmalı net fiyat gönderiyoruz." data-en="Same day: net prices with alternatives, compared against Booking.">Aynı gün alternatifli, Booking ile karşılaştırmalı net fiyat gönderiyoruz.</p></div>
+      <div class="step"><div class="n">3</div><h3 data-tr="Onay" data-en="Approval">Onay</h3><p data-tr="İsterseniz yönetici onayı WhatsApp'tan tek tıkla; ardından voucher iletilir." data-en="Optional manager approval with one tap on WhatsApp, then the voucher lands.">İsterseniz yönetici onayı WhatsApp'tan tek tıkla; ardından voucher iletilir.</p></div>
+      <div class="step"><div class="n">4</div><h3 data-tr="Fatura" data-en="Invoice">Fatura</h3><p data-tr="Kalemler cari hesabınıza işlenir; dönem sonunda tek e-fatura kesilir." data-en="Items post to your account; one e-invoice closes the period.">Kalemler cari hesabınıza işlenir; dönem sonunda tek e-fatura kesilir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HİZMETLER -->
+<section id="hizmetler" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="Otelin ötesinde" data-en="Beyond the hotel">Otelin ötesinde</h2>
+      <p data-tr="Aynı hesap, aynı fatura, aynı muhatap." data-en="Same account, same invoice, same person on the other end.">Aynı hesap, aynı fatura, aynı muhatap.</p>
+    </div>
+    <div class="g4" style="gap:18px">
+      <div class="svc"><h3 data-tr="Otel rezervasyonu" data-en="Hotel booking">Otel rezervasyonu</h3><p data-tr="Dünya genelinde oteller, net acente fiyatı, ücretsiz iptal seçenekleri işaretli." data-en="Hotels worldwide at net agency rates, with free-cancellation options flagged.">Dünya genelinde oteller, net acente fiyatı, ücretsiz iptal seçenekleri işaretli.</p></div>
+      <div class="svc"><h3 data-tr="Uçak bileti" data-en="Flights">Uçak bileti</h3><p data-tr="THY, Pegasus, AJet, Emirates ve tüm havayolları; değişiklik ve iade takibi bizde." data-en="Turkish Airlines, Pegasus, AJet, Emirates and all carriers; changes and refunds handled by us.">THY, Pegasus, AJet, Emirates ve tüm havayolları; değişiklik ve iade takibi bizde.</p></div>
+      <div class="svc"><h3 data-tr="Transfer & araç kiralama" data-en="Transfers & car hire">Transfer & araç kiralama</h3><p data-tr="Havalimanı transferi, şoförlü araç ve kiralama; varış-kalkışta refakat." data-en="Airport transfers, chauffeur service and rentals, with meet-and-greet on arrival.">Havalimanı transferi, şoförlü araç ve kiralama; varış-kalkışta refakat.</p></div>
+      <div class="svc"><h3 data-tr="Vize & belge" data-en="Visa & documents">Vize & belge</h3><p data-tr="Vize başvurusu, randevu ve belge takibi; seyahat sigortası." data-en="Visa applications, appointments, document tracking and travel insurance.">Vize başvurusu, randevu ve belge takibi; seyahat sigortası.</p></div>
+      <div class="svc"><h3 data-tr="Özel jet & VIP" data-en="Private jet & VIP">Özel jet & VIP</h3><p data-tr="Jet kiralama, boş bacak fırsatları, CIP karşılama." data-en="Jet charter, empty-leg opportunities and CIP greeting.">Jet kiralama, boş bacak fırsatları, CIP karşılama.</p></div>
+      <div class="svc"><h3 data-tr="Umre & Hac" data-en="Umrah & Hajj">Umre & Hac</h3><p data-tr="Bireysel ve kurumsal gruplar; Mekke–Medine otel ve paketleri." data-en="Individual and corporate groups; Makkah–Madinah hotels and packages.">Bireysel ve kurumsal gruplar; Mekke–Medine otel ve paketleri.</p></div>
+      <div class="svc"><h3 data-tr="Grup & incentive" data-en="Groups & incentives">Grup & incentive</h3><p data-tr="Özbekistan, Orta Asya ve Orta Doğu programları; bayi ve yönetim gezileri." data-en="Uzbekistan, Central Asia and Middle East programmes; dealer and management trips.">Özbekistan, Orta Asya ve Orta Doğu programları; bayi ve yönetim gezileri.</p></div>
+      <div class="svc"><h3 data-tr="Fuar & delegasyon" data-en="Trade fairs & delegations">Fuar & delegasyon</h3><p data-tr="Fuar, toplantı ve heyet seyahatlerinde uçtan uca planlama." data-en="End-to-end planning for fairs, meetings and official delegations.">Fuar, toplantı ve heyet seyahatlerinde uçtan uca planlama.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONFOR -->
+<section>
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="Her adımda yanınızdayız" data-en="With you at every step">Her adımda yanınızdayız</h2>
+      <p data-tr="Fiyatın dışında, seyahat konforunu artıran işler." data-en="The small things beyond price that make a trip easier.">Fiyatın dışında, seyahat konforunu artıran işler.</p>
+    </div>
+    <div class="g4">
+      <div class="pill"><div class="ic">🔑</div><h3 data-tr="Konaklama" data-en="At the hotel">Konaklama</h3><p data-tr="Upgrade, erken check-in ve geç check-out taleplerinin otele iletilmesi ve takibi." data-en="Upgrade, early check-in and late check-out requests passed to the hotel and followed up.">Upgrade, erken check-in ve geç check-out taleplerinin otele iletilmesi ve takibi.</p></div>
+      <div class="pill"><div class="ic">🤝</div><h3 data-tr="Havalimanı" data-en="At the airport">Havalimanı</h3><p data-tr="Meet & greet karşılama; varış ve kalkışta refakat." data-en="Meet and greet on arrival, with assistance through departure.">Meet & greet karşılama; varış ve kalkışta refakat.</p></div>
+      <div class="pill"><div class="ic">💺</div><h3 data-tr="Uçuş" data-en="In the air">Uçuş</h3><p data-tr="Koltuk seçimi, online check-in, havayolu üyelik numarasının işlenmesi." data-en="Seat selection, online check-in and frequent-flyer numbers added to the ticket.">Koltuk seçimi, online check-in, havayolu üyelik numarasının işlenmesi.</p></div>
+      <div class="pill"><div class="ic">💬</div><h3 data-tr="Danışmanlık" data-en="Advice">Danışmanlık</h3><p data-tr="Seyahatinizle ilgili her soruya memnuniyetle yanıt; vize, belge ve rota önerisi." data-en="Every question answered gladly — visas, documents and route suggestions included.">Seyahatinizle ilgili her soruya memnuniyetle yanıt; vize, belge ve rota önerisi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="wrap" style="padding-top:56px;padding-bottom:56px">
+    <div class="g4">
+      <div><b>1M+</b><span data-tr="otel, 5 global tedarikçi" data-en="hotels, 5 global suppliers">otel, 5 global tedarikçi</span></div>
+      <div><b>50+</b><span data-tr="ülkede aktif rezervasyon" data-en="countries with active bookings">ülkede aktif rezervasyon</span></div>
+      <div><b>%100</b><span data-tr="fiyat karşılaştırması: Booking & otel sitesi" data-en="price comparison on every quote">fiyat karşılaştırması: Booking & otel sitesi</span></div>
+      <div><b>0</b><span data-tr="rezervasyon ücreti" data-en="booking fee">rezervasyon ücreti</span></div>
+    </div>
+    <p style="margin-top:30px;color:#9FB3AC;font-size:.95rem;max-width:70ch" data-tr="Deneyim: İstanbul, Dubai, Bakü, Paris, Viyana, Milano, Londra, Mekke & Medine — iş otellerinden lüks segmente." data-en="Experience across Istanbul, Dubai, Baku, Paris, Vienna, Milan, London, Makkah and Madinah — from business hotels to the luxury segment.">Deneyim: İstanbul, Dubai, Bakü, Paris, Viyana, Milano, Londra, Mekke & Medine — iş otellerinden lüks segmente.</p>
+  </div>
+</div>
+
+<!-- İLETİŞİM -->
+<section id="iletisim">
+  <div class="wrap">
+    <div class="shead">
+      <h2 data-tr="İlk seyahatiniz bizden başlasın." data-en="Let your next trip start here.">İlk seyahatiniz bizden başlasın.</h2>
+      <p data-tr="Bir otel adı ve tarih yeterli; aynı gün karşılaştırmalı teklif gönderelim." data-en="A hotel name and dates are enough — we'll send a compared quote the same day.">Bir otel adı ve tarih yeterli; aynı gün karşılaştırmalı teklif gönderelim.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form">
+        <div class="frow">
+          <div class="field"><label for="f_firma" data-tr="Firma" data-en="Company">Firma</label><input id="f_firma" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="f_ad" data-tr="Ad soyad" data-en="Full name">Ad soyad</label><input id="f_ad" type="text" autocomplete="name"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="f_mail" data-tr="E-posta" data-en="Email">E-posta</label><input id="f_mail" type="email" autocomplete="email"></div>
+          <div class="field"><label for="f_tel" data-tr="Telefon" data-en="Phone">Telefon</label><input id="f_tel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field">
+          <label for="f_ihtiyac" data-tr="İhtiyacınız" data-en="What you need">İhtiyacınız</label>
+          <select id="f_ihtiyac">
+            <option data-tr="Otel rezervasyonu" data-en="Hotel booking">Otel rezervasyonu</option>
+            <option data-tr="Otel + uçak + transfer" data-en="Hotel + flight + transfer">Otel + uçak + transfer</option>
+            <option data-tr="Kurumsal seyahat yönetimi (cari hesap)" data-en="Managed corporate travel (account)">Kurumsal seyahat yönetimi (cari hesap)</option>
+            <option data-tr="Vize & belge" data-en="Visa & documents">Vize & belge</option>
+            <option data-tr="Özel jet / VIP" data-en="Private jet / VIP">Özel jet / VIP</option>
+            <option data-tr="Grup, fuar veya incentive" data-en="Group, trade fair or incentive">Grup, fuar veya incentive</option>
+            <option data-tr="Umre & Hac" data-en="Umrah & Hajj">Umre & Hac</option>
+          </select>
+        </div>
+        <div class="field"><label for="f_mesaj" data-tr="Otel, şehir, tarih ve kişi sayısı" data-en="Hotel, city, dates and headcount">Otel, şehir, tarih ve kişi sayısı</label><textarea id="f_mesaj"></textarea></div>
+        <div class="fbtns">
+          <button class="btn btn-p" id="sendwa" type="button" data-tr="WhatsApp'tan gönder" data-en="Send on WhatsApp">WhatsApp'tan gönder</button>
+          <button class="btn btn-o" id="sendmail" type="button" data-tr="E-posta ile gönder" data-en="Send by email">E-posta ile gönder</button>
+        </div>
+        <p class="fnote" data-tr="Talebiniz aynı gün içinde yanıtlanır. Rezervasyon ücreti alınmaz." data-en="We reply the same day. No booking fee.">Talebiniz aynı gün içinde yanıtlanır. Rezervasyon ücreti alınmaz.</p>
+      </div>
+
+      <div>
+        <div class="cline"><div class="ic">📞</div><div><b data-tr="Telefon & WhatsApp" data-en="Phone & WhatsApp">Telefon & WhatsApp</b><a href="tel:+908503024913">0850 302 49 13</a><br><a href="tel:+905413024913">0541 302 49 13</a></div></div>
+        <div class="cline"><div class="ic">✉️</div><div><b data-tr="E-posta" data-en="Email">E-posta</b><a href="mailto:info@gustovaturizm.com">info@gustovaturizm.com</a><br><a href="mailto:burcu@jerseytravelagency.com">burcu@jerseytravelagency.com</a><br><a href="mailto:fatih@jerseytravelagency.com">fatih@jerseytravelagency.com</a></div></div>
+        <div class="cline"><div class="ic">📍</div><div><b data-tr="Ofis" data-en="Office">Ofis</b><span style="font-weight:600;color:var(--ink)">DMN Plaza Kat 3, Akçaburgaz Mah., Esenyurt / İstanbul</span></div></div>
+        <div class="cline" style="border-bottom:0"><div class="ic">🏛️</div><div><b data-tr="Tüzel kişilik" data-en="Legal entity">Tüzel kişilik</b><span style="font-weight:600;color:var(--ink)">GUSTOVA Turizm Ticaret Ltd. Şti. — TÜRSAB #18492, A grubu seyahat acentası</span></div></div>
+
+        <div class="qr">
+          <div id="qrbox" aria-label="WhatsApp QR"></div>
+          <p data-tr="Kamerayı okutun — hazır mesajla teklif talebiniz anında bize düşsün." data-en="Scan with your camera — a ready-made message opens in WhatsApp.">Kamerayı okutun — hazır mesajla teklif talebiniz anında bize düşsün.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" stroke="#E6EEEA" stroke-width="2.4"/>
+            <path d="M2.6 18.5h42.8M2.6 29.5h42.8" stroke="#E6EEEA" stroke-width="1.6" opacity=".4"/>
+            <path d="M24 2c-7 7.6-7 36.4 0 44 7-7.6 7-36.4 0-44Z" stroke="#E6EEEA" stroke-width="1.6" opacity=".4"/>
+            <path d="M8 33.5c7-9.5 16.5-17 30-21.5" stroke="#C08A3E" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="38" cy="12" r="4" fill="#C08A3E"/>
+          </svg>
+          <span style="display:flex;flex-direction:column;line-height:1">
+            <b style="font-family:var(--serif);font-size:1.3rem;color:#fff;letter-spacing:.03em">GUSTOVA</b>
+            <span style="font-size:.6rem;letter-spacing:.34em;color:var(--brass);font-weight:600;margin-top:4px">TURİZM</span>
+          </span>
+        </div>
+        <p style="max-width:40ch" data-tr="Kurumsal otel, uçak, transfer ve vize çözümleri. Acente fiyatı, tek fatura, 7/24 tek muhatap." data-en="Corporate hotel, flight, transfer and visa solutions. Agency rates, one invoice, one contact around the clock.">Kurumsal otel, uçak, transfer ve vize çözümleri. Acente fiyatı, tek fatura, 7/24 tek muhatap.</p>
+      </div>
+      <div>
+        <h4 data-tr="Hizmetler" data-en="Services">Hizmetler</h4>
+        <ul>
+          <li><a href="#hizmetler" data-tr="Otel rezervasyonu" data-en="Hotel booking">Otel rezervasyonu</a></li>
+          <li><a href="#hizmetler" data-tr="Uçak bileti" data-en="Flights">Uçak bileti</a></li>
+          <li><a href="#hizmetler" data-tr="Transfer & vize" data-en="Transfers & visas">Transfer & vize</a></li>
+          <li><a href="#hizmetler" data-tr="Özel jet & VIP" data-en="Private jet & VIP">Özel jet & VIP</a></li>
+          <li><a href="#hizmetler" data-tr="Umre & Hac" data-en="Umrah & Hajj">Umre & Hac</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-tr="İletişim" data-en="Contact">İletişim</h4>
+        <ul>
+          <li><a href="tel:+908503024913">0850 302 49 13</a></li>
+          <li><a href="tel:+905413024913">0541 302 49 13</a></li>
+          <li><a href="mailto:info@gustovaturizm.com">info@gustovaturizm.com</a></li>
+          <li>DMN Plaza Kat 3, Akçaburgaz Mah., Esenyurt / İstanbul</li>
+          <li><a href="https://www.jerseytravelagency.com" target="_blank" rel="noopener">www.jerseytravelagency.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr"></span> GUSTOVA Turizm Ticaret Ltd. Şti. — TÜRSAB #18492</span>
+      <span>www.gustovaturizm.com</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wfloat" id="wa2" href="#" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.16 8.16 0 0 1-1.25-4.38c0-4.54 3.7-8.23 8.23-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  var WA_NUM = "908503024913";
+  var TXT = {
+    tr: "Merhaba, otel rezervasyonu için teklif almak istiyorum.",
+    en: "Hello, I'd like a quote for a hotel booking."
+  };
+  var lang = "tr";
+
+  function waLink(msg){ return "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(msg || TXT[lang]); }
+
+  function setLang(l){
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-tr]").forEach(function(el){
+      var v = el.getAttribute("data-" + l);
+      if(v !== null) el.textContent = v;
+    });
+    document.getElementById("btr").classList.toggle("on", l === "tr");
+    document.getElementById("ben").classList.toggle("on", l === "en");
+    document.getElementById("wa1").href = waLink();
+    document.getElementById("wa2").href = waLink();
+    try{ localStorage.setItem("gst_lang", l); }catch(e){}
+  }
+
+  document.getElementById("btr").onclick = function(){ setLang("tr"); };
+  document.getElementById("ben").onclick = function(){ setLang("en"); };
+
+  var saved = null;
+  try{ saved = localStorage.getItem("gst_lang"); }catch(e){}
+  setLang(saved === "en" ? "en" : "tr");
+
+  document.getElementById("mt").onclick = function(){
+    document.getElementById("mnav").classList.toggle("open");
+  };
+  document.querySelectorAll("#mnav a").forEach(function(a){
+    a.onclick = function(){ document.getElementById("mnav").classList.remove("open"); };
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  function collect(){
+    var g = function(id){ return (document.getElementById(id).value || "").trim(); };
+    var sel = document.getElementById("f_ihtiyac");
+    var need = sel.options[sel.selectedIndex].textContent;
+    var L = lang === "tr"
+      ? {h:"Merhaba, teklif almak istiyorum.",c:"Firma",n:"Ad soyad",e:"E-posta",p:"Telefon",t:"İhtiyaç",m:"Detay"}
+      : {h:"Hello, I'd like a quote.",c:"Company",n:"Name",e:"Email",p:"Phone",t:"Need",m:"Details"};
+    var lines = [L.h, ""];
+    if(g("f_firma")) lines.push(L.c + ": " + g("f_firma"));
+    if(g("f_ad"))    lines.push(L.n + ": " + g("f_ad"));
+    if(g("f_mail"))  lines.push(L.e + ": " + g("f_mail"));
+    if(g("f_tel"))   lines.push(L.p + ": " + g("f_tel"));
+    lines.push(L.t + ": " + need);
+    if(g("f_mesaj")) lines.push(L.m + ": " + g("f_mesaj"));
+    return lines.join("\n");
+  }
+
+  document.getElementById("sendwa").onclick = function(){
+    window.open(waLink(collect()), "_blank", "noopener");
+  };
+  document.getElementById("sendmail").onclick = function(){
+    var subj = lang === "tr" ? "Kurumsal seyahat teklif talebi" : "Corporate travel quote request";
+    window.location.href = "mailto:info@gustovaturizm.com?subject=" +
+      encodeURIComponent(subj) + "&body=" + encodeURIComponent(collect());
+  };
+
+  function drawQR(){
+    var box = document.getElementById("qrbox");
+    if(!box) return;
+    if(typeof QRCode === "undefined"){
+      box.innerHTML = '<a href="' + waLink() + '" target="_blank" rel="noopener" style="font-size:.8rem;text-align:center;padding:8px;color:#5C6864">WhatsApp</a>';
+      return;
+    }
+    new QRCode(box, { text: waLink(), width:118, height:118, colorDark:"#0C2422", colorLight:"#ffffff" });
+  }
+  if(document.readyState === "complete") drawQR();
+  else window.addEventListener("load", drawQR);
+})();
+</script>
+</body>
+</html>
