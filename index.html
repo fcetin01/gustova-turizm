@@ -158,6 +158,21 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
 .fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.82rem}
 @media (max-width:820px){.fgrid{grid-template-columns:1fr}}
 .wfloat{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:99px;background:#1FA855;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:50}
+/* otelgusto Fiyat Asistanı bandı */
+.og{background:var(--navy-2);color:#fff;padding:76px 0}
+.og .ogrid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.og .eyebrow{color:#F2A93B}.og .eyebrow::before{background:#F2A93B}
+.og h2{color:#fff}.og .lead{color:#C9D3DD}
+.og .wm{font-weight:800;letter-spacing:-.5px}.og .wm i{font-style:normal;color:#F2A93B}
+.og ol{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:12px}
+.og ol li{display:flex;gap:12px;align-items:flex-start;color:#E6ECF2}
+.og ol li b{flex:none;width:28px;height:28px;border-radius:50%;background:#F2A93B;color:#0F2A43;display:grid;place-items:center;font-size:.9rem}
+.og .acts{display:flex;flex-wrap:wrap;gap:12px}
+.og .btn-og{background:#F2A93B;color:#0F2A43}.og .btn-og:hover{background:#f5b955}
+.og .btn-ol{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.og figure{margin:0}.og figure img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.og figcaption{font-size:.82rem;color:#9FB0C2;margin-top:10px}
+@media (max-width:920px){.og .ogrid{grid-template-columns:1fr;gap:32px}.og{padding:56px 0}}
 </style>
 </head>
 <body>
@@ -169,6 +184,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
       <a href="#hizmetler" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
       <a href="#kurumsal" data-tr="Kurumsal" data-en="Corporate">Kurumsal</a>
       <a href="#nasil" data-tr="Nasıl çalışır" data-en="How it works">Nasıl çalışır</a>
+      <a href="#otel-asistani" data-tr="Otel fiyat asistanı" data-en="Hotel price assistant">Otel fiyat asistanı</a>
       <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
     </nav>
     <div class="lang" role="group" aria-label="Dil">
@@ -184,6 +200,7 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
     <a href="#hizmetler" data-tr="Hizmetler" data-en="Services">Hizmetler</a>
     <a href="#kurumsal" data-tr="Kurumsal" data-en="Corporate">Kurumsal</a>
     <a href="#nasil" data-tr="Nasıl çalışır" data-en="How it works">Nasıl çalışır</a>
+      <a href="#otel-asistani" data-tr="Otel fiyat asistanı" data-en="Hotel price assistant">Otel fiyat asistanı</a>
     <a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a>
   </div>
 </header>
@@ -305,6 +322,29 @@ footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
       <div><b>MICAM · Lineapelle</b><span data-tr="Milano · 21–25 Şubat" data-en="Milan · 21–25 Feb">Milano · 21–25 Şubat</span></div>
     </div>
     <p class="fnote" style="margin-top:14px" data-tr="Tarihler değişebilir; seyahatten önce fuarın resmî sitesinden kontrol edin." data-en="Dates may change; check the fair's official site before travelling.">Tarihler değişebilir; seyahatten önce fuarın resmî sitesinden kontrol edin.</p>
+  </div>
+</section>
+
+<section class="og" id="otel-asistani">
+  <div class="wrap ogrid">
+    <div>
+      <span class="eyebrow" data-tr="Ücretsiz Chrome eklentisi" data-en="Free Chrome extension">Ücretsiz Chrome eklentisi</span>
+      <h2 data-tr="Otelinizi daha uyguna bulun" data-en="Find your hotel for less">Otelinizi daha uyguna bulun</h2>
+      <p class="lead"><span class="wm">otel<i>gusto</i></span> <span data-tr="Fiyat Asistanı, otel sitelerinde baktığınız otelin bizdeki anlaşmalı fiyatını aynı ekranda gösterir. Dünyanın her yerindeki otellerde çalışır." data-en="Price Assistant shows our contracted rate for the hotel you are viewing on hotel booking sites, on the same screen. Works for hotels worldwide.">Fiyat Asistanı, otel sitelerinde baktığınız otelin bizdeki anlaşmalı fiyatını aynı ekranda gösterir. Dünyanın her yerindeki otellerde çalışır.</span></p>
+      <ol>
+        <li><b>1</b><span data-tr="Bilgisayarınızdan ücretsiz kurun; bir kez kurmanız yeterli." data-en="Install it free on your computer, once.">Bilgisayarınızdan ücretsiz kurun; bir kez kurmanız yeterli.</span></li>
+        <li><b>2</b><span data-tr="Booking.com, Hotels.com gibi sitelerde her zamanki gibi arayın." data-en="Search as usual on sites like Booking.com and Hotels.com.">Booking.com, Hotels.com gibi sitelerde her zamanki gibi arayın.</span></li>
+        <li><b>3</b><span data-tr="Bizde daha uygun fiyat varsa turuncu kutuda görünür; tıklayınca teklifimiz açılır." data-en="If we have a better rate, it appears in an orange box; click to open our offer.">Bizde daha uygun fiyat varsa turuncu kutuda görünür; tıklayınca teklifimiz açılır.</span></li>
+      </ol>
+      <div class="acts">
+        <a class="btn btn-og" href="https://chromewebstore.google.com/detail/jacgcginkppdhkpaefhoklpcpgcmeikd" target="_blank" rel="noopener" data-tr="Ücretsiz kur" data-en="Install free">Ücretsiz kur</a>
+        <a class="btn btn-ol" href="https://www.otelgusto.com/?k=gustova-site" target="_blank" rel="noopener" data-tr="otelgusto.com'da otel ara" data-en="Search hotels on otelgusto.com">otelgusto.com'da otel ara</a>
+      </div>
+    </div>
+    <figure>
+      <img src="/img/otelgusto/frankfurt.jpg" width="1000" height="523" loading="lazy" alt="Otel arama sonucunda otelgusto fiyat kutusu: Scandic Frankfurt Hafenpark, 1.336 € yerine 1.170 €">
+      <figcaption data-tr="Örnek: Ambiente fuarı tarihlerinde Frankfurt'ta gerçek arama (18.11.2026). Fiyatlar anlık değişir." data-en="Example: a real search in Frankfurt for Ambiente fair dates (18 Nov 2026). Prices change constantly.">Örnek: Ambiente fuarı tarihlerinde Frankfurt'ta gerçek arama (18.11.2026). Fiyatlar anlık değişir.</figcaption>
+    </figure>
   </div>
 </section>
 
