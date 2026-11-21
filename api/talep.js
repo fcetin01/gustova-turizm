@@ -11,6 +11,8 @@ const ALANLAR = [
   ["gidis", "Gidiş"],
   ["tarih_iso", "Gidiş tarihi (ISO)"],
   ["kisi", "Kişi"],
+  ["cocuk", "Çocuk"],
+  ["oda_sayisi", "Oda sayısı"],
   ["kalkis", "Kalkış"],
   ["havayolu", "Havayolu"],
   ["yemek", "Otelde yemek"],
@@ -63,7 +65,7 @@ module.exports = async function handler(req, res) {
   const blokSatir = [
     ["Ad", v.ad], ["Telefon", v.tel], ["Program", v.program],
     ["Gidiş tarihi", (iso || v.gidis) + (v.gidis && iso ? " (" + (v.gidis.split("esneklik:")[1] || "").trim() + ")" : "")],
-    ["Kişi", v.kisi], ["Kalkış", v.kalkis], ["Havayolu", v.havayolu], ["Tren", v.tren],
+    ["Kişi", v.kisi], ["Çocuk", v.cocuk], ["Oda sayısı", v.oda_sayisi], ["Kalkış", v.kalkis], ["Havayolu", v.havayolu], ["Tren", v.tren],
     ["Otelde yemek", v.yemek], ["Mekke oda", v.oda], ["Otel", v.otel], ["Ek", v.ek],
     ["Not", v.not.replace(/\s+/g, " ")], ["Kaynak", v.kaynak],
   ].filter(([, d]) => d);
