@@ -479,7 +479,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     var q = new URLSearchParams(location.search);
     return {
       ad: v("ad"), tel: v("tel"), program: r("gun"),
-      gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"),
+      gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"), tarih_iso: v("tarih"),
       kisi: r("kisi"), kalkis: r("kalkis"), havayolu: r("hy") + " · " + r("ucs"),
       yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
       otel: v("otel"), ek: ek.join(", "), not: v("not"),
