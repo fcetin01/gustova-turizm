@@ -93,24 +93,40 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdro
 .step p{color:var(--muted);font-size:1rem;margin-top:4px}
 
 #form{background:#fff}
-form.f{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:22px;max-width:820px}
-.field{display:flex;flex-direction:column;gap:8px}
-.field>label,.field>.lb{font-size:1.02rem;font-weight:800;color:var(--navy)}
-.field input,.field select,.field textarea{font:inherit;font-size:1.05rem;border:1.5px solid #CFD5DE;border-radius:12px;padding:14px;background:#fff;color:var(--text);width:100%}
-.field textarea{min-height:100px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(181,153,62,.35);border-color:var(--navy)}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:600px){.frow{grid-template-columns:1fr}}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chips label{position:relative;cursor:pointer}
+form.f{background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 30px;display:flex;flex-direction:column;gap:30px;max-width:860px;box-shadow:0 18px 50px -24px rgba(22,43,69,.35)}
+.field{display:flex;flex-direction:column;gap:12px}
+.field>label,.field>.lb{font-size:1.25rem;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.field input,.field select,.field textarea{font:inherit;font-size:1.2rem;border:2px solid #D3D9E2;border-radius:16px;padding:0 18px;min-height:64px;background:#FBFAF6;color:var(--text);width:100%;transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:120px;padding:16px 18px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#98A1AE}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(181,153,62,.28);background:#fff}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:600px){.frow{grid-template-columns:1fr}form.f{padding:24px 16px;border-radius:20px;gap:26px}}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chips label{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .chips input{position:absolute;opacity:0;pointer-events:none}
-.chips span{display:inline-flex;align-items:center;min-height:50px;padding:0 18px;border:1.5px solid #CFD5DE;border-radius:12px;background:#fff;font-weight:700;color:var(--navy);font-size:1rem}
-.chips input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
-.chips input:focus-visible+span{outline:3px solid rgba(181,153,62,.45)}
-.hint{font-size:.92rem;color:var(--muted)}
+.chips span{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:62px;padding:0 22px;border:2px solid #D3D9E2;border-radius:16px;background:#FBFAF6;font-weight:800;color:var(--navy);font-size:1.15rem;line-height:1.2;text-align:center;transition:background .15s,border-color .15s,transform .1s}
+.chips label:hover span{border-color:var(--navy)}
+.chips label:active span{transform:scale(.97)}
+.chips input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 8px 20px -10px rgba(31,56,88,.7)}
+.chips input:checked+span::before{content:"✓";display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;font-size:.85rem;font-weight:900}
+.chips input:focus-visible+span{outline:3px solid rgba(181,153,62,.55);outline-offset:2px}
+.chips.num span{min-width:64px;padding:0 14px}
+@media (max-width:600px){
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .chips span{width:100%;padding:8px 12px;font-size:1.1rem}
+  .chips.num{grid-template-columns:repeat(3,1fr)}
+  .chips.wide{grid-template-columns:1fr}
+  .chips:not(.num):not(.wide) label:last-child:nth-child(odd){grid-column:1/-1}
+}
+.send .btn{min-height:66px;font-size:1.2rem;border-radius:16px}
+.send .btn-g{flex:1 1 260px;box-shadow:0 14px 30px -14px rgba(140,116,38,.8)}
+@media (max-width:600px){.send .btn{width:100%;flex:1 1 100%}}
+.hint{font-size:1rem;color:var(--muted)}
 .err{color:#A3262A;font-weight:700;font-size:.98rem;display:none}
 .send{display:flex;gap:12px;flex-wrap:wrap}
 .fnote{font-size:.92rem;color:var(--muted)}
+.ok{background:#EEF6EF;border:1px solid #B9D8BE;border-radius:14px;padding:22px 20px}.ok b{font-size:1.15rem}.ok p{margin:8px 0 14px}
 
 .faq details{background:#fff;border:1px solid #ebe6d8;border-radius:16px;padding:18px 22px;margin-bottom:12px}
 .faq summary{font-weight:800;color:var(--navy);cursor:pointer;font-size:1.08rem}
@@ -267,9 +283,10 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     <div class="head">
       <span class="eyebrow">Teklif formu</span>
       <h2>Programınızı seçin</h2>
-      <p class="lead">Formu doldurup gönderdiğinizde bilgileriniz WhatsApp'ta hazır mesaj olarak açılır; yalnızca "gönder"e basmanız yeterli.</p>
+      <p class="lead">Formu gönderin, talebiniz doğrudan bize ulaşsın. Size özel teklifi birkaç saat içinde WhatsApp'ınıza gönderiyoruz.</p>
     </div>
     <form class="f" id="uf" novalidate>
+      <input type="text" name="web" id="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="frow">
         <div class="field"><label for="ad">Ad soyad</label><input id="ad" type="text" autocomplete="name" required></div>
         <div class="field"><label for="tel">Telefon (WhatsApp)</label><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="05xx xxx xx xx" required></div>
@@ -287,20 +304,32 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
       <div class="frow">
         <div class="field"><label for="tarih">Gidiş tarihi</label><input id="tarih" type="date" required><span class="hint">Tam bilmiyorsanız yaklaşık tarih seçin.</span></div>
-        <div class="field"><label for="esnek">Tarih esnek mi?</label>
-          <select id="esnek">
-            <option>Hayır, bu tarih</option>
-            <option>± 1–2 gün oynayabilir</option>
-            <option>± 1 hafta oynayabilir</option>
-          </select></div>
+        <div class="field"><span class="lb">Tarih esnek mi?</span>
+          <div class="chips">
+            <label><input type="radio" name="esnek" value="Hayır, bu tarih" checked><span>Bu tarih</span></label>
+            <label><input type="radio" name="esnek" value="± 1–2 gün oynayabilir"><span>± 1–2 gün</span></label>
+            <label><input type="radio" name="esnek" value="± 1 hafta oynayabilir"><span>± 1 hafta</span></label>
+          </div></div>
       </div>
 
-      <div class="frow">
-        <div class="field"><label for="kisi">Kişi sayısı</label><input id="kisi" type="number" min="1" max="60" value="2" inputmode="numeric"></div>
-        <div class="field"><label for="kalkis">Kalkış şehri</label>
-          <select id="kalkis">
-            <option>İstanbul</option><option>Ankara</option><option>İzmir</option><option>Diğer (notta yazın)</option>
-          </select></div>
+      <div class="field"><span class="lb">Kaç kişi?</span>
+        <div class="chips num">
+          <label><input type="radio" name="kisi" value="1"><span>1</span></label>
+          <label><input type="radio" name="kisi" value="2" checked><span>2</span></label>
+          <label><input type="radio" name="kisi" value="3"><span>3</span></label>
+          <label><input type="radio" name="kisi" value="4"><span>4</span></label>
+          <label><input type="radio" name="kisi" value="5"><span>5</span></label>
+          <label><input type="radio" name="kisi" value="6 veya daha fazla"><span>6+</span></label>
+        </div>
+      </div>
+
+      <div class="field"><span class="lb">Nereden uçacaksınız?</span>
+        <div class="chips">
+          <label><input type="radio" name="kalkis" value="İstanbul" checked><span>İstanbul</span></label>
+          <label><input type="radio" name="kalkis" value="Ankara"><span>Ankara</span></label>
+          <label><input type="radio" name="kalkis" value="İzmir"><span>İzmir</span></label>
+          <label><input type="radio" name="kalkis" value="Diğer (notta yazın)"><span>Diğer</span></label>
+        </div>
       </div>
 
       <div class="field"><span class="lb">Havayolu</span>
@@ -328,10 +357,10 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       </div>
 
       <div class="field"><span class="lb">Otelde yemek</span>
-        <div class="chips">
+        <div class="chips wide">
           <label><input type="radio" name="pan" value="Sadece oda"><span>Sadece oda</span></label>
           <label><input type="radio" name="pan" value="Kahvaltı dahil"><span>Kahvaltı dahil</span></label>
-          <label><input type="radio" name="pan" value="Kahvaltı + akşam yemeği dahil" checked><span>Kahvaltı + akşam yemeği dahil</span></label>
+          <label><input type="radio" name="pan" value="Kahvaltı + akşam yemeği dahil" checked><span>Kahvaltı + akşam yemeği</span></label>
         </div>
       </div>
 
@@ -357,8 +386,13 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
       <p class="err" id="err">Lütfen ad soyad, telefon ve gidiş tarihini yazın.</p>
       <div class="send">
-        <button class="btn btn-g" type="submit">WhatsApp'tan teklif iste</button>
-        <button class="btn btn-o" type="button" id="mail">E-posta ile gönder</button>
+        <button class="btn btn-g" type="submit" id="gonder">Teklif iste</button>
+        <button class="btn btn-o" type="button" id="wabtn">WhatsApp'tan yaz</button>
+      </div>
+      <div class="ok" id="ok" hidden role="status">
+        <b>Talebiniz bize ulaştı, teşekkürler.</b>
+        <p>Size özel teklifinizi birkaç saat içinde <span id="okTel"></span> numaralı WhatsApp'ınıza gönderiyoruz. Acele ederseniz WhatsApp'tan da yazabilirsiniz.</p>
+        <a class="btn btn-o" id="okWa" href="#" target="_blank" rel="noopener">WhatsApp'tan yaz</a>
       </div>
       <p class="fnote">Mesai saatlerinde gelen taleplere birkaç saat içinde dönüyoruz. Bilgileriniz yalnızca teklif hazırlamak için kullanılır (<a href="/gizlilik">Gizlilik ve KVKK</a>).</p>
     </form>
@@ -413,9 +447,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       "Ad soyad: " + v("ad"),
       "Telefon: " + v("tel"),
       "Program: " + r("gun"),
-      "Gidiş: " + trTarih(v("tarih")) + " (" + v("esnek") + ")",
-      "Kişi: " + v("kisi"),
-      "Kalkış: " + v("kalkis"),
+      "Gidiş: " + trTarih(v("tarih")) + " (" + r("esnek") + ")",
+      "Kişi: " + r("kisi"),
+      "Kalkış: " + r("kalkis"),
       "Havayolu: " + r("hy") + " · " + r("ucs"),
       "Otelde yemek: " + r("pan"),
       "Mekke oda: " + r("oda")
@@ -439,16 +473,47 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
   }
   function olay(ad){ try{ if(window.gtag) gtag("event", ad); if(window.fbq) fbq("track", "Lead"); }catch(e){} }
 
+  var acilis = Date.now();
+  function veri(){
+    var ek = [].map.call(document.querySelectorAll('input[name="ek"]:checked'), function(e){ return e.value; });
+    var q = new URLSearchParams(location.search);
+    return {
+      ad: v("ad"), tel: v("tel"), program: r("gun"),
+      gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"),
+      kisi: r("kisi"), kalkis: r("kalkis"), havayolu: r("hy") + " · " + r("ucs"),
+      yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
+      otel: v("otel"), ek: ek.join(", "), not: v("not"),
+      kaynak: [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / ") || document.referrer.split("/")[2] || "doğrudan",
+      web: v("web"), sure: Date.now() - acilis
+    };
+  }
+  function tamam(){
+    var f = document.getElementById("uf");
+    [].forEach.call(f.children, function(c){ if(c.id !== "ok") c.style.display = "none"; });
+    document.getElementById("okTel").textContent = v("tel");
+    document.getElementById("okWa").href = waLink(metin());
+    var ok = document.getElementById("ok"); ok.hidden = false; ok.style.display = "block";
+    ok.scrollIntoView({behavior: "smooth", block: "center"});
+  }
+  var gidiyor = false;
   document.getElementById("uf").addEventListener("submit", function(e){
     e.preventDefault();
+    if(gidiyor || !gecerli()) return;
+    gidiyor = true;
+    var btn = document.getElementById("gonder"); btn.disabled = true; btn.textContent = "Gönderiliyor…";
+    fetch("/api/talep", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(veri())})
+      .then(function(x){ if(!x.ok) throw new Error(x.status); return x.json(); })
+      .then(function(j){ if(!j.ok) throw new Error("ok"); olay("ozel_umre_form"); tamam(); })
+      .catch(function(){
+        gidiyor = false; btn.disabled = false; btn.textContent = "Teklif iste";
+        olay("ozel_umre_whatsapp");
+        window.open(waLink(metin()), "_blank", "noopener");
+      });
+  });
+  document.getElementById("wabtn").onclick = function(){
     if(!gecerli()) return;
     olay("ozel_umre_whatsapp");
     window.open(waLink(metin()), "_blank", "noopener");
-  });
-  document.getElementById("mail").onclick = function(){
-    if(!gecerli()) return;
-    olay("ozel_umre_eposta");
-    location.href = "mailto:info@gustovaturizm.com?subject=" + encodeURIComponent("Özel umre teklif talebi") + "&body=" + encodeURIComponent(metin());
   };
 })();
 </script>
