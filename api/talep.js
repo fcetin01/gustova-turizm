@@ -70,11 +70,19 @@ module.exports = async function handler(req, res) {
     ["Not", v.not.replace(/\s+/g, " ")], ["Kaynak", v.kaynak],
   ].filter(([, d]) => d);
   const blok = "/umre-teklif\n" + blokSatir.map(([et, d]) => et + ": " + d).join("\n");
-  const text = "Yeni özel umre teklif talebi (gustovaturizm.com/ozel-umre)\n\n" +
-    satirlar.filter(([et]) => et !== "Gidiş tarihi (ISO)").map(([et, d]) => et + ": " + d).join("\n") +
-    "\n\n----- Yapay zekâya yapıştır (hızlı teklif) -----\n" + blok + "\n-----";
   const telLink = "tel:" + v.tel.replace(/[^\d+]/g, "");
   const waNo = v.tel.replace(/\D/g, "").replace(/^0/, "90");
+  // İlk cevap (Fatih 21.11: talebe ilk 15 dakikada dönülsün) — WhatsApp'ta hazır metin, gönderen Fatih/ekip
+  const ilkAd = v.ad.split(/\s+/)[0] || v.ad;
+  const tarihKisa = (v.gidis || "").split(" ·")[0].split(" (")[0];
+  const ilkCevap = "Merhaba " + ilkAd + ", talebiniz bize ulaştı 🙏 " +
+    (tarihKisa ? tarihKisa + " için " : "") + (v.program ? v.program + " " : "") +
+    "umre programınızı çalışıyoruz; birkaç saat içinde seçenekli teklifimizi buradan iletiyoruz. GUSTOVA Turizm";
+  const ilkCevapLink = "https://wa.me/" + waNo + "?text=" + encodeURIComponent(ilkCevap);
+  const text = "Yeni özel umre teklif talebi (gustovaturizm.com/ozel-umre)\n\n" +
+    satirlar.filter(([et]) => et !== "Gidiş tarihi (ISO)").map(([et, d]) => et + ": " + d).join("\n") +
+    "\n\nİlk cevabı WhatsApp'tan gönder: " + ilkCevapLink +
+    "\n\n----- Yapay zekâya yapıştır (hızlı teklif) -----\n" + blok + "\n-----";
   const html =
     '<div style="font-family:Arial,sans-serif;font-size:15px;color:#111">' +
     "<p><b>Yeni özel umre teklif talebi</b> (gustovaturizm.com/ozel-umre)</p>" +
@@ -83,7 +91,9 @@ module.exports = async function handler(req, res) {
       '<tr><td style="color:#666;vertical-align:top;white-space:nowrap">' + kacis(et) +
       '</td><td style="white-space:pre-wrap">' + kacis(d) + "</td></tr>").join("") +
     "</table>" +
-    '<p><a href="' + kacis(telLink) + '">Ara</a> · <a href="https://wa.me/' + kacis(waNo) + '">WhatsApp</a></p>' +
+    '<p><a href="' + kacis(ilkCevapLink) + '" style="display:inline-block;background:#1FA855;color:#fff;font-weight:bold;text-decoration:none;padding:12px 18px;border-radius:10px">✅ İlk cevabı WhatsApp\'tan gönder (hazır mesaj)</a></p>' +
+    '<p style="color:#666;font-size:13px;margin-top:-6px">Mesaj: “' + kacis(ilkCevap) + '”</p>' +
+    '<p><a href="' + kacis(telLink) + '">Ara</a> · <a href="https://wa.me/' + kacis(waNo) + '">WhatsApp (boş)</a></p>' +
     '<p style="margin:22px 0 6px;font-weight:bold;color:#1F3858">🤖 Hızlı teklif — bu kutunun tamamını kopyalayıp GUSTOVA Claude oturumuna yapıştırın:</p>' +
     '<pre style="font:14px/1.5 Menlo,Consolas,monospace;background:#F3F1EA;border:1px solid #DED8C8;border-radius:10px;padding:14px;white-space:pre-wrap;margin:0">' +
     kacis(blok) + "</pre></div>";

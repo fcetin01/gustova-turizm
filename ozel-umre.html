@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Size Özel Umre — Küçük ve Butik Gruplara 2–5 Gün | GUSTOVA Turizm</title>
-<meta name="description" content="2, 3, 4 veya 5 günlük özel umre. Siz pasaportunuzu verin; uçak bileti, vize, çıkış harcı, otel, özel GMC transfer, tren ve isteğe bağlı rehberlik bizde. Formu doldurun, teklifiniz WhatsApp'ınıza gelsin. TÜRSAB A Grubu 18492.">
-<meta property="og:title" content="Size Özel Umre — Küçük ve butik gruplara, teklif birkaç saat içinde">
+<meta name="description" content="Kafile beklemeden 2, 3, 4 veya 5 günlük özel umre. Siz pasaportunuzu verin; uçak bileti, vize, çıkış harcı, otel, özel GMC transfer, tren ve isteğe bağlı rehberlik bizde. Formu doldurun, teklifiniz WhatsApp'ınıza gelsin. TÜRSAB A Grubu 18492.">
+<meta property="og:title" content="Kafile Beklemeden, Size Özel Umre — teklif birkaç saat içinde">
 <meta property="og:description" content="2–5 günlük özel umre. Tarihi, havayolunu, oteli ve odayı siz seçin; teklifiniz birkaç saat içinde WhatsApp'ınızda.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.gustovaturizm.com/ozel-umre">
@@ -51,7 +51,22 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdro
 .hbar .logo img{height:44px;width:auto}
 .hbar .btn{margin-left:auto;min-height:46px;padding:0 20px;font-size:.98rem}
 
-.hero{background:linear-gradient(180deg,rgba(12,24,42,.55),rgba(12,24,42,.88)),url(/img/ozel-umre/oda-2-kabe.jpg) 35% 60%/cover #162B45;color:#fff;padding:120px 0 96px}
+.hero{background:radial-gradient(120% 90% at 85% 10%,#2A4870 0%,#162B45 55%,#0F2036 100%);color:#fff;padding:56px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.hero-foto{margin:0;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.12)}
+.hero-foto .kirp{overflow:hidden;aspect-ratio:4/3}
+.hero-foto img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.3);transform-origin:41% 60%}
+.hero-foto figcaption{font-size:.9rem;color:var(--gold-soft);padding:10px 16px;background:rgba(15,32,54,.9)}
+.madde{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.madde li{display:flex;align-items:center;gap:12px;font-size:1.25rem;font-weight:700;color:#fff;line-height:1.3}
+.madde li::before{content:"✓";flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;font-size:1rem;font-weight:900}
+@media (max-width:860px){
+  .hero{padding:18px 0 48px}
+  .hero-grid{grid-template-columns:1fr;gap:22px}
+  .hero-foto{order:-1;border-radius:18px}
+  .hero-foto img{transform:scale(1.55);transform-origin:41% 60%}
+  .madde li{font-size:1.15rem}
+}
 .hero .tag{display:inline-block;background:var(--gold);color:#fff;font-weight:800;padding:8px 16px;border-radius:10px;font-size:1rem;margin-bottom:16px}
 .hero h1{color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold-soft)}
@@ -152,6 +167,32 @@ footer a{color:#fff;text-decoration:none}
 footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
 .wfloat{position:fixed;right:18px;bottom:18px;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:50}
 </style>
+<script>
+/* Google Ads dönüşüm ölçümü — yalnız çerez onayı verilirse yüklenir (KVKK). */
+(function(){
+  var ANAHTAR = "gustova_cerez", ID = "AW-16980571317";
+  function yukle(){
+    if (window.__gtagYuklendi) return; window.__gtagYuklendi = true;
+    var s = document.createElement("script"); s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID; document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag("js", new Date()); gtag("config", ID);
+  }
+  var tercih = null; try { tercih = localStorage.getItem(ANAHTAR); } catch(e){}
+  window.gustovaCerez = { yukle: yukle, tercih: tercih, anahtar: ANAHTAR };
+  if (tercih === "evet") yukle();
+})();
+</script>
+<style>
+.cerez{position:fixed;left:16px;right:96px;bottom:16px;z-index:60;max-width:560px;background:#fff;color:var(--text);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px -18px rgba(22,43,69,.45);padding:14px 16px;font-size:.95rem;line-height:1.45}
+.cerez p{margin:0 0 10px}
+.cerez .dg{display:flex;gap:10px;flex-wrap:wrap}
+.cerez button{font:inherit;font-weight:800;border-radius:12px;min-height:44px;padding:0 18px;cursor:pointer;border:2px solid var(--navy)}
+.cerez .evet{background:var(--navy);color:#fff}
+.cerez .hayir{background:#fff;color:var(--navy)}
+@media (max-width:600px){.cerez{left:10px;right:10px;bottom:84px}}
+</style>
 </head>
 <body>
 
@@ -166,15 +207,28 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
 <section class="hero">
   <div class="wrap">
-    <span class="tag">Küçük ve butik gruplara</span><br>
+    <div class="hero-grid">
+    <div class="hero-txt">
+    <span class="tag">Kafile beklemeden</span><br>
     <span class="eyebrow">2 · 3 · 4 · 5 günlük</span>
     <h1 style="margin-top:16px">Size Özel <em>Umre</em></h1>
-    <p class="lead">Paket tur değil, <b>grubunuza özel teklif</b>. Pasaportunuzu verin, gerisi bizde. Teklifiniz <b>birkaç saat içinde WhatsApp'ınızda</b>.</p>
+    <ul class="madde">
+      <li>Kafile beklemeden, istediğiniz tarihte</li>
+      <li>Yalnız size ve ailenize özel</li>
+      <li>Pasaportunuzu verin, gerisi bizde</li>
+      <li>Teklif birkaç saatte WhatsApp'ınızda</li>
+    </ul>
     <div class="cta">
       <a class="btn btn-g" href="#form">Formu doldur, teklif al</a>
       <a class="btn btn-o wa" href="#">WhatsApp'tan yaz</a>
     </div>
     <p class="tursab">TÜRSAB A Grubu · Belge No 18492</p>
+    </div>
+    <figure class="hero-foto">
+      <div class="kirp"><img src="/img/ozel-umre/oda-2-kabe.jpg" alt="Penceresinden Kâbe görünen otel odası" width="1024" height="768" fetchpriority="high"></div>
+      <figcaption>Odanızdan Kâbe manzarası — oda tipini formda seçin</figcaption>
+    </figure>
+    </div>
   </div>
 </section>
 
@@ -182,10 +236,10 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Paket tur değil</span>
-      <h2>Size özel teklif, butik grup</h2>
+      <h2>Kafile beklemeden, size özel program</h2>
     </div>
     <div class="why">
-      <div class="card"><div class="ck">1</div><b>Kalabalık otobüs yok</b><span>2 kişi de olsanız, 20 kişi de: program yalnızca sizin grubunuza.</span></div>
+      <div class="card"><div class="ck">1</div><b>Kafile beklemezsiniz</b><span>Grubun dolmasını beklemeden, istediğiniz tarihte yola çıkarsınız. 2 kişi de olsanız 20 kişi de, program yalnızca sizin.</span></div>
       <div class="card"><div class="ck">2</div><b>Küçük ve butik gruplar</b><span>Aileniz, dostlarınız veya ekibinizle; kendi saatinizde.</span></div>
       <div class="card"><div class="ck">3</div><b>Birkaç saatte teklif</b><span>Formu doldurun, seçenekli fiyatınız WhatsApp'ınıza gelsin.</span></div>
       <div class="card"><div class="ck">4</div><b>Sadece pasaportunuz</b><span>Bilet, vize, otel ve transfer işlemlerinin hepsini biz yaparız.</span></div>
@@ -453,6 +507,11 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
   </div>
 </footer>
 
+<div class="cerez" id="cerez" hidden role="dialog" aria-label="Çerez tercihi">
+  <p>Reklamlarımızın işe yarayıp yaramadığını ölçmek için, izin verirseniz Google'ın ölçüm çerezini kullanıyoruz. <a href="/gizlilik">Ayrıntılar</a></p>
+  <div class="dg"><button class="evet" type="button" id="cerezEvet">Kabul et</button><button class="hayir" type="button" id="cerezHayir">Reddet</button></div>
+</div>
+
 <a class="wfloat wa" href="#" aria-label="WhatsApp">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
 </a>
@@ -540,7 +599,20 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     if (!(ok && !yasEksik)) err.scrollIntoView({block: "center"});
     return ok && !yasEksik;
   }
-  function olay(ad){ try{ if(window.gtag) gtag("event", ad); if(window.fbq) fbq("track", "Lead"); }catch(e){} }
+  function olay(ad){
+    try{
+      if (window.gtag && ad === "ozel_umre_form") gtag("event", "conversion", {"send_to": "AW-16980571317/xH0xCMSw8bwdELXp-6A_"});
+      if (window.fbq && ad === "ozel_umre_form") fbq("track", "Lead");
+    }catch(e){}
+  }
+  (function(){
+    var c = window.gustovaCerez, kutu = document.getElementById("cerez");
+    if (!c || c.tercih) return;
+    kutu.hidden = false;
+    function sec(v){ try { localStorage.setItem(c.anahtar, v); } catch(e){} kutu.hidden = true; if (v === "evet") c.yukle(); }
+    document.getElementById("cerezEvet").onclick = function(){ sec("evet"); };
+    document.getElementById("cerezHayir").onclick = function(){ sec("hayir"); };
+  })();
 
   var acilis = Date.now();
   function veri(){
