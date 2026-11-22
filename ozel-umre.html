@@ -141,6 +141,7 @@ form.f{background:#fff;border:1px solid var(--line);border-radius:26px;padding:3
 .send .btn-g{flex:1 1 260px;box-shadow:0 14px 30px -14px rgba(140,116,38,.8)}
 @media (max-width:600px){.send .btn{width:100%;flex:1 1 100%}}
 .hint{font-size:1rem;color:var(--muted)}
+.field input.sayi{margin-top:12px;max-width:320px}
 .err{color:#A3262A;font-weight:700;font-size:.98rem;display:none}
 .send{display:flex;gap:12px;flex-wrap:wrap}
 .fnote{font-size:.92rem;color:var(--muted)}
@@ -376,8 +377,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
           <label><input type="radio" name="kisi" value="3"><span>3</span></label>
           <label><input type="radio" name="kisi" value="4"><span>4</span></label>
           <label><input type="radio" name="kisi" value="5"><span>5</span></label>
-          <label><input type="radio" name="kisi" value="6 veya daha fazla"><span>6+</span></label>
+          <label><input type="radio" name="kisi" value="fazla"><span>6+</span></label>
         </div>
+        <input id="kisiSay" class="sayi" type="number" inputmode="numeric" min="6" max="500" placeholder="Kaç kişisiniz? Örn. 10" aria-label="Kişi sayısı" hidden>
       </div>
 
       <div class="field"><span class="lb">Çocuk var mı?</span>
@@ -406,8 +408,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
           <label><input type="radio" name="oda_sayisi" value="3"><span>3</span></label>
           <label><input type="radio" name="oda_sayisi" value="4"><span>4</span></label>
           <label><input type="radio" name="oda_sayisi" value="5"><span>5</span></label>
-          <label><input type="radio" name="oda_sayisi" value="6 veya daha fazla"><span>6+</span></label>
+          <label><input type="radio" name="oda_sayisi" value="fazla"><span>6+</span></label>
         </div>
+        <input id="odaSay" class="sayi" type="number" inputmode="numeric" min="6" max="250" placeholder="Kaç oda? Örn. 8" aria-label="Oda sayısı" hidden>
         <span class="hint">Örn. 4 kişi: tek oda (4 kişilik) ya da 2 oda (2+2).</span>
       </div>
 
@@ -530,6 +533,12 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
   function v(id){ return (document.getElementById(id).value || "").trim(); }
   function r(name){ var e = document.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ""; }
+  function sayi(name, id){ var x = r(name); return x === "fazla" ? (v(id) || "6 veya daha fazla") : x; }
+  function kisi(){ return sayi("kisi", "kisiSay"); }
+  function odaSay(){ return sayi("oda_sayisi", "odaSay"); }
+  function sayiGoster(){
+    [["kisi","kisiSay"],["oda_sayisi","odaSay"]].forEach(function(a){ var e = document.getElementById(a[1]), ac = r(a[0]) === "fazla"; if (e.hidden === ac) { e.hidden = !ac; if (ac && !e.value) e.focus(); } });
+  }
   function trTarih(s){ if(!s) return ""; var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; }
 
   function metin(){
@@ -541,7 +550,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       "Telefon: " + v("tel"),
       "Program: " + r("gun"),
       "Gidiş: " + trTarih(v("tarih")) + " (" + r("esnek") + ")",
-      "Kişi: " + r("kisi") + " · çocuk: " + cocukMetni() + " · oda: " + r("oda_sayisi"),
+      "Kişi: " + kisi() + " · çocuk: " + cocukMetni() + " · oda: " + odaSay(),
       "Kalkış: " + r("kalkis"),
       "Havayolu: " + r("hy") + " · " + r("ucs"),
       "Otelde yemek: " + r("pan"),
@@ -571,13 +580,17 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
   document.querySelectorAll('input[name="cocukvar"],input[name="cocuk"]').forEach(function(e){ e.addEventListener("change", cocukGoster); });
   cocukGoster();
   var odaElle = false;
-  document.querySelectorAll('input[name="oda_sayisi"]').forEach(function(e){ e.addEventListener("change", function(){ odaElle = true; }); });
+  document.querySelectorAll('input[name="oda_sayisi"]').forEach(function(e){ e.addEventListener("change", function(){ odaElle = true; sayiGoster(); }); });
+  document.getElementById("odaSay").addEventListener("input", function(){ odaElle = true; });
   function odaOner(){
     if (odaElle) return;
-    var k = parseInt(r("kisi"), 10) || 6, o = Math.min(6, Math.ceil(k / 2)), v = o >= 6 ? "6 veya daha fazla" : String(o);
-    var e = document.querySelector('input[name="oda_sayisi"][value="' + v + '"]'); if (e) e.checked = true;
+    var k = parseInt(kisi(), 10) || 6, o = Math.ceil(k / 2), d = o >= 6 ? "fazla" : String(o);
+    var e = document.querySelector('input[name="oda_sayisi"][value="' + d + '"]'); if (e) e.checked = true;
+    var od = document.getElementById("odaSay"); od.value = o >= 6 && kisi() !== "6 veya daha fazla" ? String(o) : "";
+    od.hidden = d !== "fazla";
   }
-  document.querySelectorAll('input[name="kisi"]').forEach(function(e){ e.addEventListener("change", odaOner); });
+  document.querySelectorAll('input[name="kisi"]').forEach(function(e){ e.addEventListener("change", function(){ sayiGoster(); odaOner(); }); });
+  document.getElementById("kisiSay").addEventListener("input", odaOner);
   odaOner();
   function cocukMetni(){
     if (r("cocukvar") !== "Evet") return "Yok";
@@ -594,7 +607,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     var err = document.getElementById("err");
     var ok = v("ad") && v("tel").replace(/\D/g, "").length >= 10 && v("tarih");
     var yasEksik = r("cocukvar") === "Evet" && [].some.call(document.querySelectorAll("#yaslar select"), function(s){ return !s.value; });
-    err.textContent = !ok ? "Lütfen ad soyad, telefon ve gidiş tarihini yazın." : "Lütfen çocukların yaşını seçin.";
+    var kisiEksik = r("kisi") === "fazla" && !(parseInt(v("kisiSay"), 10) >= 1);
+    yasEksik = yasEksik || kisiEksik;
+    err.textContent = !ok ? "Lütfen ad soyad, telefon ve gidiş tarihini yazın." : kisiEksik ? "Lütfen kaç kişi olduğunuzu yazın." : "Lütfen çocukların yaşını seçin.";
     err.style.display = ok && !yasEksik ? "none" : "block";
     if (!(ok && !yasEksik)) err.scrollIntoView({block: "center"});
     return ok && !yasEksik;
@@ -621,7 +636,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     return {
       ad: v("ad"), tel: v("tel"), program: r("gun"),
       gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"), tarih_iso: v("tarih"),
-      kisi: r("kisi"), cocuk: cocukMetni(), oda_sayisi: r("oda_sayisi"), kalkis: r("kalkis"), havayolu: r("hy") + " · " + r("ucs"),
+      kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: r("kalkis"), havayolu: r("hy") + " · " + r("ucs"),
       yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
       otel: v("otel"), ek: ek.join(", "), not: v("not"),
       kaynak: [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / ") || document.referrer.split("/")[2] || "doğrudan",
