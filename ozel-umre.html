@@ -141,7 +141,13 @@ form.f{background:#fff;border:1px solid var(--line);border-radius:26px;padding:3
 .send .btn-g{flex:1 1 260px;box-shadow:0 14px 30px -14px rgba(140,116,38,.8)}
 @media (max-width:600px){.send .btn{width:100%;flex:1 1 100%}}
 .hint{font-size:1rem;color:var(--muted)}
-.field input.sayi{margin-top:12px;max-width:320px}
+.field input.sehir{margin-top:12px;max-width:420px}
+.adet{display:flex;align-items:stretch;gap:10px;max-width:300px}
+.adet .ad-btn{flex:none;width:68px;min-height:64px;border:2px solid #D3D9E2;border-radius:16px;background:#FBFAF6;color:var(--navy);font:inherit;font-size:2rem;font-weight:800;line-height:1;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.adet .ad-btn:active{transform:scale(.96);background:var(--navy);color:#fff}
+.adet .ad-btn:disabled{opacity:.35;cursor:default}
+.field .adet input{text-align:center;font-size:1.6rem;font-weight:800;color:var(--navy);padding:0 6px;-moz-appearance:textfield}
+.adet input::-webkit-outer-spin-button,.adet input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .err{color:#A3262A;font-weight:700;font-size:.98rem;display:none}
 .send{display:flex;gap:12px;flex-wrap:wrap}
 .fnote{font-size:.92rem;color:var(--muted)}
@@ -371,15 +377,8 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       </div>
 
       <div class="field"><span class="lb">Kaç kişi? <span class="hint" style="font-weight:600">(çocuklar dahil)</span></span>
-        <div class="chips num">
-          <label><input type="radio" name="kisi" value="1"><span>1</span></label>
-          <label><input type="radio" name="kisi" value="2" checked><span>2</span></label>
-          <label><input type="radio" name="kisi" value="3"><span>3</span></label>
-          <label><input type="radio" name="kisi" value="4"><span>4</span></label>
-          <label><input type="radio" name="kisi" value="5"><span>5</span></label>
-          <label><input type="radio" name="kisi" value="fazla"><span>6+</span></label>
-        </div>
-        <input id="kisiSay" class="sayi" type="number" inputmode="numeric" min="6" max="500" placeholder="Kaç kişisiniz? Örn. 10" aria-label="Kişi sayısı" hidden>
+        <div class="adet"><button type="button" class="ad-btn" data-hedef="kisiSay" data-adim="-1" aria-label="Azalt">−</button><input id="kisiSay" type="number" inputmode="numeric" min="1" max="50" value="2" aria-label="Kişi sayısı"><button type="button" class="ad-btn" data-hedef="kisiSay" data-adim="1" aria-label="Artır">+</button></div>
+        <span class="hint">En fazla 50 kişi. Daha kalabalık gruplar için notta yazın.</span>
       </div>
 
       <div class="field"><span class="lb">Çocuk var mı?</span>
@@ -390,27 +389,14 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       </div>
 
       <div class="field" id="cocukAlan" hidden><span class="lb">Kaç çocuk?</span>
-        <div class="chips num">
-          <label><input type="radio" name="cocuk" value="1" checked><span>1</span></label>
-          <label><input type="radio" name="cocuk" value="2"><span>2</span></label>
-          <label><input type="radio" name="cocuk" value="3"><span>3</span></label>
-          <label><input type="radio" name="cocuk" value="4"><span>4</span></label>
-        </div>
+        <div class="adet"><button type="button" class="ad-btn" data-hedef="cocukSay" data-adim="-1" aria-label="Azalt">−</button><input id="cocukSay" type="number" inputmode="numeric" min="1" max="20" value="1" aria-label="Çocuk sayısı"><button type="button" class="ad-btn" data-hedef="cocukSay" data-adim="1" aria-label="Artır">+</button></div>
         <span class="lb" style="margin-top:10px">Çocukların yaşı</span>
         <div class="yaslar" id="yaslar"></div>
         <span class="hint">2 yaşından küçükler için "0–1" seçin.</span>
       </div>
 
       <div class="field"><span class="lb">Kaç oda istiyorsunuz?</span>
-        <div class="chips num">
-          <label><input type="radio" name="oda_sayisi" value="1" checked><span>1</span></label>
-          <label><input type="radio" name="oda_sayisi" value="2"><span>2</span></label>
-          <label><input type="radio" name="oda_sayisi" value="3"><span>3</span></label>
-          <label><input type="radio" name="oda_sayisi" value="4"><span>4</span></label>
-          <label><input type="radio" name="oda_sayisi" value="5"><span>5</span></label>
-          <label><input type="radio" name="oda_sayisi" value="fazla"><span>6+</span></label>
-        </div>
-        <input id="odaSay" class="sayi" type="number" inputmode="numeric" min="6" max="250" placeholder="Kaç oda? Örn. 8" aria-label="Oda sayısı" hidden>
+        <div class="adet"><button type="button" class="ad-btn" data-hedef="odaSay" data-adim="-1" aria-label="Azalt">−</button><input id="odaSay" type="number" inputmode="numeric" min="1" max="25" value="1" aria-label="Oda sayısı"><button type="button" class="ad-btn" data-hedef="odaSay" data-adim="1" aria-label="Artır">+</button></div>
         <span class="hint">Örn. 4 kişi: tek oda (4 kişilik) ya da 2 oda (2+2).</span>
       </div>
 
@@ -419,8 +405,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
           <label><input type="radio" name="kalkis" value="İstanbul" checked><span>İstanbul</span></label>
           <label><input type="radio" name="kalkis" value="Ankara"><span>Ankara</span></label>
           <label><input type="radio" name="kalkis" value="İzmir"><span>İzmir</span></label>
-          <label><input type="radio" name="kalkis" value="Diğer (notta yazın)"><span>Diğer</span></label>
+          <label><input type="radio" name="kalkis" value="diger"><span>Diğer şehir</span></label>
         </div>
+        <input id="kalkisSehir" class="sehir" type="text" maxlength="60" autocomplete="address-level2" placeholder="Şehir yazın, örn. Antalya" aria-label="Kalkış şehri" hidden>
       </div>
 
       <div class="field"><span class="lb">Havayolu</span>
@@ -533,12 +520,12 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
   function v(id){ return (document.getElementById(id).value || "").trim(); }
   function r(name){ var e = document.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ""; }
-  function sayi(name, id){ var x = r(name); return x === "fazla" ? (v(id) || "6 veya daha fazla") : x; }
-  function kisi(){ return sayi("kisi", "kisiSay"); }
-  function odaSay(){ return sayi("oda_sayisi", "odaSay"); }
-  function sayiGoster(){
-    [["kisi","kisiSay"],["oda_sayisi","odaSay"]].forEach(function(a){ var e = document.getElementById(a[1]), ac = r(a[0]) === "fazla"; if (e.hidden === ac) { e.hidden = !ac; if (ac && !e.value) e.focus(); } });
-  }
+  function say(id){ var e = document.getElementById(id), n = parseInt(e.value, 10); return isNaN(n) ? NaN : n; }
+  function sinirla(id){ var e = document.getElementById(id), mn = +e.min, mx = +e.max, n = say(id); if (!isNaN(n)) { n = Math.max(mn, Math.min(mx, n)); if (String(n) !== e.value) e.value = n; } dugmeler(); }
+  function dugmeler(){ [].forEach.call(document.querySelectorAll(".ad-btn"), function(b){ var e = document.getElementById(b.dataset.hedef), n = say(b.dataset.hedef); b.disabled = !isNaN(n) && (b.dataset.adim < 0 ? n <= +e.min : n >= +e.max); }); }
+  function kalkis(){ var x = r("kalkis"); return x === "diger" ? (v("kalkisSehir") || "Diğer şehir") : x; }
+  function kisi(){ return String(say("kisiSay") || ""); }
+  function odaSay(){ return String(say("odaSay") || ""); }
   function trTarih(s){ if(!s) return ""; var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; }
 
   function metin(){
@@ -551,7 +538,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       "Program: " + r("gun"),
       "Gidiş: " + trTarih(v("tarih")) + " (" + r("esnek") + ")",
       "Kişi: " + kisi() + " · çocuk: " + cocukMetni() + " · oda: " + odaSay(),
-      "Kalkış: " + r("kalkis"),
+      "Kalkış: " + kalkis(),
       "Havayolu: " + r("hy") + " · " + r("ucs"),
       "Otelde yemek: " + r("pan"),
       "Mekke oda: " + r("oda")
@@ -565,7 +552,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
 
   var YASLAR = ["0–1"].concat(Array.from({length: 16}, function(_, i){ return String(i + 2); }));
   function yasCiz(){
-    var n = parseInt(r("cocuk") || "1", 10), kutu = document.getElementById("yaslar"), eski = [].map.call(kutu.querySelectorAll("select"), function(s){ return s.value; });
+    var n = (say("cocukSay") || 1), kutu = document.getElementById("yaslar"), eski = [].map.call(kutu.querySelectorAll("select"), function(s){ return s.value; });
     kutu.innerHTML = "";
     for (var i = 0; i < n; i++){
       var l = document.createElement("label"), sel = document.createElement("select");
@@ -577,21 +564,28 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     }
   }
   function cocukGoster(){ var var_ = r("cocukvar") === "Evet"; document.getElementById("cocukAlan").hidden = !var_; if (var_) yasCiz(); }
-  document.querySelectorAll('input[name="cocukvar"],input[name="cocuk"]').forEach(function(e){ e.addEventListener("change", cocukGoster); });
+  document.querySelectorAll('input[name="cocukvar"]').forEach(function(e){ e.addEventListener("change", cocukGoster); });
+  document.getElementById("cocukSay").addEventListener("input", function(){ if (say("cocukSay") >= 1) yasCiz(); });
+  document.getElementById("cocukSay").addEventListener("change", function(){ sinirla("cocukSay"); yasCiz(); });
   cocukGoster();
   var odaElle = false;
-  document.querySelectorAll('input[name="oda_sayisi"]').forEach(function(e){ e.addEventListener("change", function(){ odaElle = true; sayiGoster(); }); });
-  document.getElementById("odaSay").addEventListener("input", function(){ odaElle = true; });
   function odaOner(){
     if (odaElle) return;
-    var k = parseInt(kisi(), 10) || 6, o = Math.ceil(k / 2), d = o >= 6 ? "fazla" : String(o);
-    var e = document.querySelector('input[name="oda_sayisi"][value="' + d + '"]'); if (e) e.checked = true;
-    var od = document.getElementById("odaSay"); od.value = o >= 6 && kisi() !== "6 veya daha fazla" ? String(o) : "";
-    od.hidden = d !== "fazla";
+    var k = say("kisiSay"); if (isNaN(k)) return;
+    document.getElementById("odaSay").value = Math.min(25, Math.max(1, Math.ceil(k / 2))); dugmeler();
   }
-  document.querySelectorAll('input[name="kisi"]').forEach(function(e){ e.addEventListener("change", function(){ sayiGoster(); odaOner(); }); });
+  [].forEach.call(document.querySelectorAll(".ad-btn"), function(b){ b.addEventListener("click", function(){
+    var id = b.dataset.hedef, e = document.getElementById(id), n = say(id); e.value = (isNaN(n) ? +e.min : n) + (+b.dataset.adim); sinirla(id);
+    e.dispatchEvent(new Event("input")); if (id === "odaSay") odaElle = true; if (id === "cocukSay") yasCiz();
+  }); });
   document.getElementById("kisiSay").addEventListener("input", odaOner);
-  odaOner();
+  document.getElementById("kisiSay").addEventListener("change", function(){ sinirla("kisiSay"); odaOner(); });
+  document.getElementById("odaSay").addEventListener("input", function(){ odaElle = true; });
+  document.getElementById("odaSay").addEventListener("change", function(){ sinirla("odaSay"); });
+  odaOner(); dugmeler();
+  document.querySelectorAll('input[name="kalkis"]').forEach(function(e){ e.addEventListener("change", function(){
+    var k = document.getElementById("kalkisSehir"), ac = r("kalkis") === "diger"; k.hidden = !ac; if (ac) k.focus();
+  }); });
   function cocukMetni(){
     if (r("cocukvar") !== "Evet") return "Yok";
     var y = [].map.call(document.querySelectorAll("#yaslar select"), function(s){ return s.value || "?"; });
@@ -607,9 +601,12 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     var err = document.getElementById("err");
     var ok = v("ad") && v("tel").replace(/\D/g, "").length >= 10 && v("tarih");
     var yasEksik = r("cocukvar") === "Evet" && [].some.call(document.querySelectorAll("#yaslar select"), function(s){ return !s.value; });
-    var kisiEksik = r("kisi") === "fazla" && !(parseInt(v("kisiSay"), 10) >= 1);
+    ["kisiSay","odaSay","cocukSay"].forEach(sinirla);
+    var kisiEksik = !(say("kisiSay") >= 1) || !(say("odaSay") >= 1);
+    var sehirEksik = r("kalkis") === "diger" && !v("kalkisSehir");
+    if (ok && sehirEksik) { err.textContent = "Lütfen hangi şehirden uçacağınızı yazın."; err.style.display = "block"; document.getElementById("kalkisSehir").focus(); return false; }
     yasEksik = yasEksik || kisiEksik;
-    err.textContent = !ok ? "Lütfen ad soyad, telefon ve gidiş tarihini yazın." : kisiEksik ? "Lütfen kaç kişi olduğunuzu yazın." : "Lütfen çocukların yaşını seçin.";
+    err.textContent = !ok ? "Lütfen ad soyad, telefon ve gidiş tarihini yazın." : kisiEksik ? "Lütfen kişi ve oda sayısını yazın." : "Lütfen çocukların yaşını seçin.";
     err.style.display = ok && !yasEksik ? "none" : "block";
     if (!(ok && !yasEksik)) err.scrollIntoView({block: "center"});
     return ok && !yasEksik;
@@ -636,7 +633,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     return {
       ad: v("ad"), tel: v("tel"), program: r("gun"),
       gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"), tarih_iso: v("tarih"),
-      kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: r("kalkis"), havayolu: r("hy") + " · " + r("ucs"),
+      kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: kalkis(), havayolu: r("hy") + " · " + r("ucs"),
       yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
       otel: v("otel"), ek: ek.join(", "), not: v("not"),
       kaynak: [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / ") || document.referrer.split("/")[2] || "doğrudan",

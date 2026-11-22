@@ -70,6 +70,8 @@ module.exports = async function handler(req, res) {
     ["Not", v.not.replace(/\s+/g, " ")], ["Kaynak", v.kaynak],
   ].filter(([, d]) => d);
   const blok = "/umre-teklif\n" + blokSatir.map(([et, d]) => et + ": " + d).join("\n");
+  // Tek dokunuşla kopyalama: blok bağlantının # kısmında (sunucuya gitmez)
+  const kopyaLink = "https://www.gustovaturizm.com/kopya#" + Buffer.from(blok, "utf8").toString("base64url");
   const telLink = "tel:" + v.tel.replace(/[^\d+]/g, "");
   const waNo = v.tel.replace(/\D/g, "").replace(/^0/, "90");
   // İlk cevap (Fatih 21.11: talebe ilk 15 dakikada dönülsün) — WhatsApp'ta hazır metin, gönderen Fatih/ekip
@@ -82,6 +84,7 @@ module.exports = async function handler(req, res) {
   const text = "Yeni özel umre teklif talebi (gustovaturizm.com/ozel-umre)\n\n" +
     satirlar.filter(([et]) => et !== "Gidiş tarihi (ISO)").map(([et, d]) => et + ": " + d).join("\n") +
     "\n\nİlk cevabı WhatsApp'tan gönder: " + ilkCevapLink +
+    "\n\nHızlı teklif bloğunu tek dokunuşla kopyala: " + kopyaLink +
     "\n\n----- Yapay zekâya yapıştır (hızlı teklif) -----\n" + blok + "\n-----";
   const html =
     '<div style="font-family:Arial,sans-serif;font-size:15px;color:#111">' +
@@ -94,7 +97,9 @@ module.exports = async function handler(req, res) {
     '<p><a href="' + kacis(ilkCevapLink) + '" style="display:inline-block;background:#1FA855;color:#fff;font-weight:bold;text-decoration:none;padding:12px 18px;border-radius:10px">✅ İlk cevabı WhatsApp\'tan gönder (hazır mesaj)</a></p>' +
     '<p style="color:#666;font-size:13px;margin-top:-6px">Mesaj: “' + kacis(ilkCevap) + '”</p>' +
     '<p><a href="' + kacis(telLink) + '">Ara</a> · <a href="https://wa.me/' + kacis(waNo) + '">WhatsApp (boş)</a></p>' +
-    '<p style="margin:22px 0 6px;font-weight:bold;color:#1F3858">🤖 Hızlı teklif — bu kutunun tamamını kopyalayıp GUSTOVA Claude oturumuna yapıştırın:</p>' +
+    '<p style="margin:22px 0 6px;font-weight:bold;color:#1F3858">🤖 Hızlı teklif — GUSTOVA Claude oturumuna yapıştırın</p>' +
+    '<p style="margin:0 0 10px"><a href="' + kacis(kopyaLink) + '" style="display:inline-block;background:#1F3858;color:#fff;font-weight:bold;text-decoration:none;padding:14px 22px;border-radius:10px;font-size:16px">📋 Tek dokunuşla kopyala</a></p>' +
+    '<p style="color:#666;font-size:13px;margin:0 0 6px">Ya da aşağıdaki kutunun tamamını seçip kopyalayın:</p>' +
     '<pre style="font:14px/1.5 Menlo,Consolas,monospace;background:#F3F1EA;border:1px solid #DED8C8;border-radius:10px;padding:14px;white-space:pre-wrap;margin:0">' +
     kacis(blok) + "</pre></div>";
 
