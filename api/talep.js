@@ -93,12 +93,14 @@ module.exports = async function handler(req, res) {
   // Tek dokunuşla kopyalama: blok bağlantının # kısmında (sunucuya gitmez)
   const kopyaLink = "https://www.gustovaturizm.com/kopya#" + Buffer.from(blok, "utf8").toString("base64url");
   const telLink = "tel:" + v.tel.replace(/[^\d+]/g, "");
-  const waNo = v.tel.replace(/\D/g, "").replace(/^0/, "90");
+  // WhatsApp numarası: 0 ile başlıyorsa 0 → 90; 10 hane (5xx…) ise başına 90; aksi hâlde olduğu gibi (yurt dışı)
+  const telRakam = v.tel.replace(/\D/g, "");
+  const waNo = /^0\d{10}$/.test(telRakam) ? "9" + telRakam : /^5\d{9}$/.test(telRakam) ? "90" + telRakam : telRakam.replace(/^00/, "");
   // İlk cevap (Fatih 21.11: talebe ilk 15 dakikada dönülsün) — WhatsApp'ta hazır metin, gönderen Fatih/ekip
   const ilkAd = v.ad.split(/\s+/)[0] || v.ad;
   const tarihKisa = (v.gidis || "").split(" ·")[0].split(" (")[0];
   const ilkCevap = "Merhaba " + ilkAd + ", talebiniz bize ulaştı 🙏 " +
-    (tarihKisa ? tarihKisa + " için " : "") + (v.program ? v.program + " " : "") +
+    (tarihKisa ? tarihKisa + " için " : "") + (v.program && !/öneri|uzun/i.test(v.program) ? v.program + " " : "") +
     "umre programınızı çalışıyoruz; birkaç saat içinde seçenekli teklifimizi buradan iletiyoruz. GUSTOVA Turizm";
   const ilkCevapLink = "https://wa.me/" + waNo + "?text=" + encodeURIComponent(ilkCevap);
   const text = "Yeni özel umre teklif talebi (gustovaturizm.com/ozel-umre)\n\n" +
@@ -126,9 +128,7 @@ module.exports = async function handler(req, res) {
   const konu = "Özel umre talebi — " + v.ad + (v.program ? " — " + v.program : "") + (v.gidis ? " — " + v.gidis : "");
 
   const tgMetin = "🕋 Yeni özel umre talebi\n\n" +
-    [["Ad", v.ad], ["Tel", v.tel], ["Program", v.program], ["Gidiş", v.gidis], ["Kişi", v.kisi], ["Çocuk", v.cocuk],
-     ["Oda", v.oda_sayisi], ["Kalkış", v.kalkis], ["Not", v.not.replace(/\s+/g, " ").slice(0, 300)], ["Kaynak", v.kaynak]]
-      .filter(([, d]) => d).map(([et, d]) => et + ": " + d).join("\n") +
+    satirlar.filter(([et]) => et !== "Gidiş tarihi (ISO)").map(([et, d]) => et + ": " + d).join("\n") +
     "\n\nİlk cevap mesajı: “" + ilkCevap + "”";
   const tgIs = telegram(tgMetin, [
     { text: "✅ İlk cevabı WhatsApp'tan gönder", url: ilkCevapLink },
