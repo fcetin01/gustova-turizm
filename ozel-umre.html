@@ -434,6 +434,14 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
         </div>
       </div>
 
+      <div class="field" id="bagajAlan"><span class="lb">Bagaj</span>
+        <div class="chips wide" id="bagajSec">
+          <label><input type="radio" name="bag" value="23 kg bagaj dahil" checked><span>23 kg bagaj dahil</span></label>
+          <label><input type="radio" name="bag" value="Yalnız kabin bagajı"><span>Yalnız kabin bagajı</span></label>
+        </div>
+        <span class="hint" id="bagajNot">Yalnız kabin bagajıyla fiyat kişi başı yaklaşık 100 $ daha uygun olur. Dönüşte hediyelik, kitap, hurma için 23 kg bagajı öneririz.</span>
+      </div>
+
       <div class="field"><span class="lb">Otelde yemek</span>
         <div class="chips wide">
           <label><input type="radio" name="pan" value="Sadece oda"><span>Sadece oda</span></label>
@@ -540,6 +548,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       "Kişi: " + kisi() + " · çocuk: " + cocukMetni() + " · oda: " + odaSay(),
       "Kalkış: " + kalkis(),
       "Havayolu: " + r("hy") + " · " + r("ucs"),
+      "Bagaj: " + bagaj(),
       "Otelde yemek: " + r("pan"),
       "Mekke oda: " + r("oda")
     ];
@@ -592,6 +601,18 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     return y.length + " çocuk (yaş: " + y.join(", ") + ")";
   }
 
+  // Bagaj (Fatih 22.11): THY ekonomide ve business'ta bagaj zaten dahil → seçim gizlenir
+  function bagajDahil(){ return r("ucs") === "Business" || r("hy") === "Türk Hava Yolları"; }
+  function bagaj(){ return bagajDahil() ? (r("ucs") === "Business" ? "Business (bagaj dahil)" : "THY ekonomi (23 kg bagaj dahil)") : r("bag"); }
+  function bagajGoster(){
+    var d = bagajDahil();
+    document.getElementById("bagajSec").style.display = d ? "none" : "";
+    document.getElementById("bagajNot").textContent = d
+      ? (r("ucs") === "Business" ? "Business biletlerde bagaj dahildir." : "THY ekonomi biletlerde 23 kg bagaj dahildir.")
+      : "Yalnız kabin bagajıyla fiyat kişi başı yaklaşık 100 $ daha uygun olur. Dönüşte hediyelik, kitap, hurma için 23 kg bagajı öneririz.";
+  }
+  document.querySelectorAll('input[name="ucs"], input[name="hy"]').forEach(function(e){ e.addEventListener("change", bagajGoster); });
+  bagajGoster();
   function medine(){ return /Medine/.test(r("gun")) || /uzun/.test(r("gun")); }
   function trenGoster(){ document.getElementById("trenAlan").style.visibility = medine() ? "visible" : "hidden"; }
   document.querySelectorAll('input[name="gun"]').forEach(function(e){ e.addEventListener("change", trenGoster); });
@@ -633,7 +654,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     return {
       ad: v("ad"), tel: v("tel"), program: r("gun"),
       gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"), tarih_iso: v("tarih"),
-      kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: kalkis(), havayolu: r("hy") + " · " + r("ucs"),
+      kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: kalkis(), havayolu: r("hy") + " · " + r("ucs"), bagaj: bagaj(),
       yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
       otel: v("otel"), ek: ek.join(", "), not: v("not"),
       kaynak: [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / ") || document.referrer.split("/")[2] || "doğrudan",
