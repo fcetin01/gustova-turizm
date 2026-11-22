@@ -32,6 +32,25 @@ function kacis(s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Telegram bildirimi (isteğe bağlı): TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (virgülle birden çok) varsa gönderir.
+// Hata olursa e-postayı bozmaz; düğmeli gönderim reddedilirse düğmesiz tekrar dener.
+async function telegram(metin, dugmeler) {
+  const tok = process.env.TELEGRAM_BOT_TOKEN;
+  const sohbetler = String(process.env.TELEGRAM_CHAT_ID || "").split(",").map((x) => x.trim()).filter(Boolean).slice(0, 4);
+  if (!tok || !sohbetler.length) return;
+  const gonder = (chat_id, ek) => fetch("https://api.telegram.org/bot" + tok + "/sendMessage", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(Object.assign({ chat_id, text: metin.slice(0, 4000), disable_web_page_preview: true }, ek)),
+  });
+  await Promise.all(sohbetler.map(async (chat_id) => {
+    try {
+      let r = await gonder(chat_id, { reply_markup: { inline_keyboard: dugmeler.map((d) => [d]) } });
+      if (!r.ok) r = await gonder(chat_id, { text: (metin + "\n\n" + dugmeler.map((d) => d.text + ": " + d.url).join("\n\n")).slice(0, 4000) });
+      if (!r.ok) console.error("Telegram", r.status, (await r.text()).slice(0, 200));
+    } catch (e) { console.error("Telegram hata", e && e.message); }
+  }));
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") {
@@ -106,18 +125,30 @@ module.exports = async function handler(req, res) {
 
   const konu = "Özel umre talebi — " + v.ad + (v.program ? " — " + v.program : "") + (v.gidis ? " — " + v.gidis : "");
 
+  const tgMetin = "🕋 Yeni özel umre talebi\n\n" +
+    [["Ad", v.ad], ["Tel", v.tel], ["Program", v.program], ["Gidiş", v.gidis], ["Kişi", v.kisi], ["Çocuk", v.cocuk],
+     ["Oda", v.oda_sayisi], ["Kalkış", v.kalkis], ["Not", v.not.replace(/\s+/g, " ").slice(0, 300)], ["Kaynak", v.kaynak]]
+      .filter(([, d]) => d).map(([et, d]) => et + ": " + d).join("\n") +
+    "\n\nİlk cevap mesajı: “" + ilkCevap + "”";
+  const tgIs = telegram(tgMetin, [
+    { text: "✅ İlk cevabı WhatsApp'tan gönder", url: ilkCevapLink },
+    { text: "📋 Teklif bloğunu kopyala", url: kopyaLink },
+  ]);
+
   try {
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: "Bearer " + key, "Content-Type": "application/json" },
       body: JSON.stringify({ from, to, subject: konu.slice(0, 200), text, html }),
     });
+    await tgIs;
     if (!r.ok) {
       console.error("Resend", r.status, (await r.text()).slice(0, 300));
       return res.status(502).json({ ok: false, hata: "gonderilemedi" });
     }
     return res.status(200).json({ ok: true });
   } catch (e) {
+    await tgIs;
     console.error("Resend hata", e && e.message);
     return res.status(502).json({ ok: false, hata: "gonderilemedi" });
   }
