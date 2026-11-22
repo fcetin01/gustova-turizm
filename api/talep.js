@@ -98,10 +98,7 @@ module.exports = async function handler(req, res) {
   const waNo = /^0\d{10}$/.test(telRakam) ? "9" + telRakam : /^5\d{9}$/.test(telRakam) ? "90" + telRakam : telRakam.replace(/^00/, "");
   // İlk cevap (Fatih 21.11: talebe ilk 15 dakikada dönülsün) — WhatsApp'ta hazır metin, gönderen Fatih/ekip
   const ilkAd = v.ad.split(/\s+/)[0] || v.ad;
-  const tarihKisa = (v.gidis || "").split(" ·")[0].split(" (")[0];
-  const ilkCevap = "Merhaba " + ilkAd + ", talebiniz bize ulaştı 🙏 " +
-    (tarihKisa ? tarihKisa + " için " : "") + (v.program && !/öneri|uzun/i.test(v.program) ? v.program + " " : "") +
-    "umre programınızı çalışıyoruz; birkaç saat içinde seçenekli teklifimizi buradan iletiyoruz. GUSTOVA Turizm";
+  const ilkCevap = "Merhaba " + ilkAd + ", talebinizi aldık 🙏 Kısa süre içinde size dönüş yapacağız. Bu arada bir sorunuz ya da isteğiniz olursa buradan yazabilir veya bizi arayabilirsiniz. GUSTOVA Turizm";
   const ilkCevapLink = "https://wa.me/" + waNo + "?text=" + encodeURIComponent(ilkCevap);
   const text = "Yeni özel umre teklif talebi (gustovaturizm.com/ozel-umre)\n\n" +
     satirlar.filter(([et]) => et !== "Gidiş tarihi (ISO)").map(([et, d]) => et + ": " + d).join("\n") +
