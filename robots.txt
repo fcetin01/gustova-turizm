@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kopya
+
+Sitemap: https://www.gustovaturizm.com/sitemap.xml
