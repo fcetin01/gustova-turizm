@@ -134,6 +134,7 @@ form.f{background:#fff;border:1px solid var(--line);border-radius:26px;padding:3
   .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .chips span{width:100%;padding:8px 12px;font-size:1.1rem}
   .chips.num{grid-template-columns:repeat(3,1fr)}
+  .chips.gunler label.baska{grid-column:1/-1}
   .chips.wide{grid-template-columns:1fr}
   .chips:not(.num):not(.wide) label:last-child:nth-child(odd){grid-column:1/-1}
 }
@@ -356,12 +357,20 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       </div>
 
       <div class="field"><span class="lb">Kaç günlük?</span>
-        <div class="chips" role="radiogroup">
+        <div class="chips num gunler" role="radiogroup">
           <label><input type="radio" name="gun" value="3 gün (Medine + Mekke)"><span>3 gün</span></label>
           <label><input type="radio" name="gun" value="4 gün (Medine + Mekke)" checked><span>4 gün</span></label>
           <label><input type="radio" name="gun" value="5 gün (Medine + Mekke)"><span>5 gün</span></label>
-          <label><input type="radio" name="gun" value="Daha uzun / öneri istiyorum"><span>Daha uzun</span></label>
+          <label><input type="radio" name="gun" value="6 gün (Medine + Mekke)"><span>6 gün</span></label>
+          <label><input type="radio" name="gun" value="7 gün (Medine + Mekke)"><span>7 gün</span></label>
+          <label><input type="radio" name="gun" value="8 gün (Medine + Mekke)"><span>8 gün</span></label>
+          <label><input type="radio" name="gun" value="10 gün (Medine + Mekke)"><span>10 gün</span></label>
+          <label><input type="radio" name="gun" value="12 gün (Medine + Mekke)"><span>12 gün</span></label>
+          <label><input type="radio" name="gun" value="15 gün (Medine + Mekke)"><span>15 gün</span></label>
+          <label class="baska"><input type="radio" name="gun" value="diger"><span>Başka</span></label>
         </div>
+        <input id="gunSay" class="sehir" type="number" inputmode="numeric" min="3" max="60" placeholder="Kaç gün? Örn. 20" aria-label="Gün sayısı" hidden>
+        <span class="hint">Her program Medine + Mekke. Listede yoksa "Başka"yı seçip gün sayısını yazın.</span>
       </div>
 
       <div class="frow">
@@ -448,13 +457,15 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
         </div>
       </div>
 
-      <div class="field"><span class="lb">Mekke'de oda</span>
+      <div class="field"><span class="lb">Mekke'de oda tipi <span class="hint" style="font-weight:600">(birden fazla seçebilirsiniz)</span></span>
         <div class="chips">
-          <label><input type="radio" name="oda" value="Harem manzaralı" checked><span>Harem manzaralı</span></label>
-          <label><input type="radio" name="oda" value="Kâbe manzaralı"><span>Kâbe manzaralı</span></label>
-          <label><input type="radio" name="oda" value="Suit"><span>Suit</span></label>
-          <label><input type="radio" name="oda" value="Ekonomik (Harem'e yürüme mesafesi)"><span>Ekonomik</span></label>
+          <label><input type="checkbox" name="oda" value="Standart" checked><span>Standart</span></label>
+          <label><input type="checkbox" name="oda" value="Harem manzaralı"><span>Harem manzaralı</span></label>
+          <label><input type="checkbox" name="oda" value="Kâbe manzaralı"><span>Kâbe manzaralı</span></label>
+          <label><input type="checkbox" name="oda" value="Suit"><span>Suit</span></label>
+          <label><input type="checkbox" name="oda" value="Ekonomik (Harem'e yürüme mesafesi)"><span>Ekonomik</span></label>
         </div>
+        <span class="hint">Seçtiğiniz her oda tipi için fiyat veririz.</span>
       </div>
 
       <div class="field"><label for="otel">İstediğiniz otel (varsa)</label><input id="otel" type="text" placeholder="Örn. Swissôtel Makkah, Madinah Hilton"></div>
@@ -531,6 +542,11 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
   function dugmeler(){ [].forEach.call(document.querySelectorAll(".ad-btn"), function(b){ var e = document.getElementById(b.dataset.hedef), n = say(b.dataset.hedef); b.disabled = !isNaN(n) && (b.dataset.adim < 0 ? n <= +e.min : n >= +e.max); }); }
   function kalkis(){ var x = r("kalkis"); return x === "diger" ? (v("kalkisSehir") || "Diğer şehir") : x; }
   function kisi(){ return String(say("kisiSay") || ""); }
+  function gun(){ var x = r("gun"); if (x !== "diger") return x; var n = say("gunSay"); return isNaN(n) ? "Daha uzun / öneri istiyorum" : n + " gün (Medine + Mekke)"; }
+  function odaTipi(){ var o = [].map.call(document.querySelectorAll('input[name="oda"]:checked'), function(e){ return e.value; }); return o.length ? o.join(" + ") : "Standart"; }
+  document.querySelectorAll('input[name="gun"]').forEach(function(e){ e.addEventListener("change", function(){
+    var k = document.getElementById("gunSay"), ac = r("gun") === "diger"; k.hidden = !ac; if (ac) k.focus();
+  }); });
   function odaSay(){ return String(say("odaSay") || ""); }
   function trTarih(s){ if(!s) return ""; var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; }
 
@@ -541,14 +557,14 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
       "",
       "Ad soyad: " + v("ad"),
       "Telefon: " + v("tel"),
-      "Program: " + r("gun"),
+      "Program: " + gun(),
       "Gidiş: " + trTarih(v("tarih")) + " (" + r("esnek") + ")",
       "Kişi: " + kisi() + " · çocuk: " + cocukMetni() + " · oda: " + odaSay(),
       "Kalkış: " + kalkis(),
       "Havayolu: " + r("hy") + " · " + r("ucs"),
       "Bagaj: " + bagaj(),
       "Otelde yemek: " + r("pan"),
-      "Mekke oda: " + r("oda")
+      "Mekke oda: " + odaTipi()
     ];
     if(medine()) L.push("Tren: " + r("trs"));
     if(v("otel")) L.push("Otel: " + v("otel"));
@@ -623,6 +639,8 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     ["kisiSay","odaSay","cocukSay"].forEach(sinirla);
     var kisiEksik = !(say("kisiSay") >= 1) || !(say("odaSay") >= 1);
     var sehirEksik = r("kalkis") === "diger" && !v("kalkisSehir");
+    var gunEksik = r("gun") === "diger" && !(say("gunSay") >= 3);
+    if (ok && gunEksik) { err.textContent = "Lütfen kaç gün istediğinizi yazın (en az 3)."; err.style.display = "block"; document.getElementById("gunSay").focus(); return false; }
     if (ok && sehirEksik) { err.textContent = "Lütfen hangi şehirden uçacağınızı yazın."; err.style.display = "block"; document.getElementById("kalkisSehir").focus(); return false; }
     yasEksik = yasEksik || kisiEksik;
     err.textContent = !ok ? "Lütfen ad soyad, telefon ve gidiş tarihini yazın." : kisiEksik ? "Lütfen kişi ve oda sayısını yazın." : "Lütfen çocukların yaşını seçin.";
@@ -650,10 +668,10 @@ footer .fl{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-betwe
     var ek = [].map.call(document.querySelectorAll('input[name="ek"]:checked'), function(e){ return e.value; });
     var q = new URLSearchParams(location.search);
     return {
-      ad: v("ad"), tel: v("tel"), program: r("gun"),
+      ad: v("ad"), tel: v("tel"), program: gun(),
       gidis: trTarih(v("tarih")) + " · esneklik: " + r("esnek"), tarih_iso: v("tarih"),
       kisi: kisi(), cocuk: cocukMetni(), oda_sayisi: odaSay(), kalkis: kalkis(), havayolu: r("hy") + " · " + r("ucs"), bagaj: bagaj(),
-      yemek: r("pan"), oda: r("oda"), tren: medine() ? r("trs") : "",
+      yemek: r("pan"), oda: odaTipi(), tren: medine() ? r("trs") : "",
       otel: v("otel"), ek: ek.join(", "), not: v("not"),
       kaynak: [q.get("utm_source"), q.get("utm_campaign")].filter(Boolean).join(" / ") || document.referrer.split("/")[2] || "doğrudan",
       web: v("web"), sure: Date.now() - acilis
